@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Domain.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Platform.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>PokerPalm.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +23,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>D237BE3B1DB40FA800128623</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D237BE551DB4117E00128623</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D237BE671DB4118700128623</key>
 		<dict>
 			<key>primary</key>
 			<true/>
