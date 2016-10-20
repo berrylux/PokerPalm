@@ -18,10 +18,10 @@ public struct Session: Identifiable {
     let ID = UUID()
     let token: String
     var name: String
-    var configuration: SesionConfiguration
+    var configuration: Configuration
     var stories: [Story]
 
-    public struct SesionConfiguration: Identifiable { // TODO: refactor
+    public struct Configuration: Identifiable { // TODO: refactor
         let ID: UUID
         var isPlayerAllowedToShow: Bool
         var isPlayerAllowedToReset: Bool
@@ -84,7 +84,7 @@ import RxSwift
 public protocol Repository {
     func query<T>(_ type: T.Type, predicate: NSPredicate) -> Observable<[T]>
     func queryFirst<T>(_ type: T.Type, predicate: NSPredicate) -> Observable<T?>
-    func save<T>(_ object: T)
+    func save<T>(_ object: T) -> Observable<T>
 }
 
 public protocol SessionIDGenerator {
