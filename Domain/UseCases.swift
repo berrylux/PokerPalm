@@ -28,7 +28,9 @@ public class CreateSessionUseCase: UseCase {
         let storage: Repository
     }
 
-    public static func assebmle(input: Observable<Void>, service: Services, output: AnyObserver<UseCaseState<Session>>) -> Disposable {
+    public static func assebmle(input: Observable<Void>,
+                                service: Services,
+                                output: AnyObserver<UseCaseState<Session>>) -> Disposable {
         return input.flatMap {
                 return generateSession(services: service)
             }
@@ -38,19 +40,19 @@ public class CreateSessionUseCase: UseCase {
             .startWith(UseCaseState.inProgress)
             .subscribe(output)
     }
-    static func generateSession(services: Services) -> Observable<Session> {
+    private static func generateSession(services: Services) -> Observable<Session> {
         return Observable.just(services.sessionIDGenerator.generate())
-            .flatMap { name -> Observable<Session?> in
+            .flatMapLatest { name -> Observable<Session?> in
                 let predicate: NSPredicate = Attribute<String>("name") == name
                 return services.storage.queryFirst(Session.self,
                                                   predicate: predicate)
             }
-            .flatMap { session -> Observable<Session> in
+            .flatMapLatest { session -> Observable<Session> in
                 guard let session = session else {
                     return Observable.empty() // TODO. Create Session
                 }
                 return generateSession(services: services)
-        }
+            }
     }
 }
 
