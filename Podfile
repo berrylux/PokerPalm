@@ -10,7 +10,7 @@ target 'PokerPalm' do
 end
 
 target 'Platform' do
-  pod 'Realm'
+  pod 'RealmSwift'
   pod 'RxSwift', '3.0.0-beta.2'
 end
 

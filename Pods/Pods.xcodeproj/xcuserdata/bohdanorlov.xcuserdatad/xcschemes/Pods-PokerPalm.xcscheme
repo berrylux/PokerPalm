@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FDCD2FF838692CBCF559A985029FEFCF"
+               BlueprintIdentifier = "DFAE3C7C8079E126E81464CFDE9423ED"
                BuildableName = "Pods_PokerPalm.framework"
                BlueprintName = "Pods-PokerPalm"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FDCD2FF838692CBCF559A985029FEFCF"
+            BlueprintIdentifier = "DFAE3C7C8079E126E81464CFDE9423ED"
             BuildableName = "Pods_PokerPalm.framework"
             BlueprintName = "Pods-PokerPalm"
             ReferencedContainer = "container:Pods.xcodeproj">
