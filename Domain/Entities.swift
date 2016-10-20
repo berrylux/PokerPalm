@@ -7,16 +7,44 @@
 //
 
 import Foundation
-//public protocol SessionBuilder {
+//public struct SessionBuilder {
 //
 //}
-public protocol Session {
-    var ID: String { get }
-    var name: String { get }
-    var configuration: SesionConfiguration  { get }
-    var stories: [Story] { get }
+protocol Identifiable {
+    var ID: UUID { get }
+}
 
-    static func make(configuration: SesionConfiguration, story: Story) -> Session;
+public struct Session: Identifiable {
+    let ID = UUID()
+    let token: String
+    var name: String
+    var configuration: SesionConfiguration
+    var stories: [Story]
+
+    public struct SesionConfiguration: Identifiable { // TODO: refactor
+        let ID: UUID
+        var isPlayerAllowedToShow: Bool
+        var isPlayerAllowedToReset: Bool
+        var isPlayerAllowedToAmmendSession: Bool
+        var isObserverAllowedToShow: Bool
+        var isObserverAllowedToReset: Bool
+        var isObserverAllowedToAmmendSession: Bool
+
+        init(isPlayerAllowedToShow: Bool = true,
+             isPlayerAllowedToReset: Bool = true,
+             isPlayerAllowedToAmmendSession: Bool = true,
+             isObserverAllowedToShow: Bool = true,
+             isObserverAllowedToReset: Bool = true,
+             isObserverAllowedToAmmendSession: Bool = true) {
+            ID = UUID()
+            self.isPlayerAllowedToShow = isPlayerAllowedToShow
+            self.isPlayerAllowedToReset = isPlayerAllowedToReset
+            self.isPlayerAllowedToAmmendSession = isPlayerAllowedToAmmendSession
+            self.isObserverAllowedToShow = isObserverAllowedToShow
+            self.isObserverAllowedToReset = isObserverAllowedToReset
+            self.isObserverAllowedToAmmendSession = isObserverAllowedToAmmendSession
+        }
+    }
 }
 
 public extension Session {
@@ -26,43 +54,37 @@ public extension Session {
     static var stories:Attribute<String> { return "stories" }
 }
 
-public protocol SesionConfiguration { // TODO: refactor
-    var isPlayerAllowedToShow: Bool  { get }
-    var isPlayerAllowedToReset: Bool { get }
-    var isPlayerAllowedToAmmendSession: Bool { get }
-    var isObserverAllowedToShow: Bool { get }
-    var isObserverAllowedToReset: Bool { get }
-    var isObserverAllowedToAmmendSession: Bool { get }
+public struct Story: Identifiable {
+    let ID = UUID()
+    var description: String?
+    let startTime: Date
+    var endTime: Date?
+    var users: [User]
+    var votes: [Vote]
 }
 
-public protocol Story {
-    var description: String? { get }
-    var startTime: Date { get }
-    var endTime: Date? { get }
-    var users: [User] { get }
-    var votes: [Vote] { get }
+public struct Vote: Identifiable {
+    let ID = UUID()
+    var user: User
 }
 
-public protocol Vote {
-    var user: User { get }
-}
 
-public protocol User {
-    var name: String { get }
-}
+public struct User: Identifiable {
+    let ID = UUID()
+    let role: Role
+    let name: String
 
-public protocol Player: User {
-    var name: String { get }
-}
-
-public protocol Observer: User {
-    var name: String { get }
+    public enum Role {
+        case player
+        case observer
+    }
 }
 
 import RxSwift
 public protocol Repository {
     func query<T>(_ type: T.Type, predicate: NSPredicate) -> Observable<[T]>
     func queryFirst<T>(_ type: T.Type, predicate: NSPredicate) -> Observable<T?>
+    func save<T>(_ object: T)
 }
 
 public protocol SessionIDGenerator {

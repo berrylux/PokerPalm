@@ -25,18 +25,16 @@ public enum UseCaseState<T> {
 public class CreateSessionUseCase: UseCase {
     public struct Services {
         let sessionIDGenerator: SessionIDGenerator
-        let storage: Repository
+        let repository: Repository
     }
 
     public static func assebmle(input: Observable<Void>,
                                 service: Services,
                                 output: AnyObserver<UseCaseState<Session>>) -> Disposable {
-        return input.flatMap {
+        return input.flatMapLatest {
                 return generateSession(services: service)
             }
-            .map {
-                return UseCaseState.succeded($0)
-            }
+            .map(UseCaseState.succeded)
             .startWith(UseCaseState.inProgress)
             .subscribe(output)
     }
@@ -44,7 +42,7 @@ public class CreateSessionUseCase: UseCase {
         return Observable.just(services.sessionIDGenerator.generate())
             .flatMapLatest { name -> Observable<Session?> in
                 let predicate: NSPredicate = Attribute<String>("name") == name
-                return services.storage.queryFirst(Session.self,
+                return services.repository.queryFirst(Session.self,
                                                   predicate: predicate)
             }
             .flatMapLatest { session -> Observable<Session> in
