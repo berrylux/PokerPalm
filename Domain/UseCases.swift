@@ -51,7 +51,7 @@ public class CreateSessionUseCase: UseCase {
     private static func generateSession(user: User, services: Services)  -> Observable<Session> {
         return Observable.just(services.sessionIDGenerator.generate())
             .flatMapLatest { name -> Observable<(String, Session?)> in
-                let predicate: NSPredicate = Attribute<String>("name") == name
+                let predicate: NSPredicate = Session.ID == name
                 let justName = Observable.just(name)
                 let session = services.repository.queryFirst(Session.self,
                         predicate: predicate)
