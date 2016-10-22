@@ -12,6 +12,7 @@ public struct Vote: Identifiable {
 
 extension Vote: Equatable {
     public static func == (lhs: Vote, rhs: Vote) -> Bool {
-        return lhs.ID == rhs.ID
+        return lhs.ID == rhs.ID &&
+            lhs.user == rhs.user
     }
 }

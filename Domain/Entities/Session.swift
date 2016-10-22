@@ -11,7 +11,7 @@ public struct Session: Identifiable {
     public var name: String
     public var configuration: Configuration
     public var stories: [Story]
-
+    
     public init(ID: UUID = UUID(),
                 token: String,
                 name: String,
@@ -23,7 +23,7 @@ public struct Session: Identifiable {
         self.configuration = configuration
         self.stories = stories
     }
-
+    
     public struct Configuration: Identifiable { // TODO: refactor
         public let ID: UUID
         public var isPlayerAllowedToShow: Bool
@@ -32,7 +32,7 @@ public struct Session: Identifiable {
         public var isObserverAllowedToShow: Bool
         public var isObserverAllowedToReset: Bool
         public var isObserverAllowedToAmendSession: Bool
-
+        
         public init(ID: UUID = UUID(),
                     isPlayerAllowedToShow: Bool = true,
                     isPlayerAllowedToReset: Bool = true,
@@ -59,22 +59,24 @@ public extension Session {
     static var stories:Attribute<String> { return "stories" }
 }
 
-extension Session.Configuration: Equatable {
-    public static func == (lhs: Session.Configuration, rhs: Session.Configuration) -> Bool {
-        return lhs.isPlayerAllowedToShow == rhs.isPlayerAllowedToShow &&
-                lhs.isPlayerAllowedToShow == rhs.isPlayerAllowedToShow &&
-                lhs.isPlayerAllowedToReset == rhs.isPlayerAllowedToReset &&
-                lhs.isPlayerAllowedToAmendSession == rhs.isPlayerAllowedToAmendSession &&
-                lhs.isObserverAllowedToShow == rhs.isObserverAllowedToShow &&
-                lhs.isObserverAllowedToReset == rhs.isObserverAllowedToReset
+extension Session: Equatable {
+    public static func == (lhs: Session, rhs: Session) -> Bool {
+        return lhs.ID == rhs.ID &&
+            lhs.token == rhs.token &&
+            lhs.token == rhs.token &&
+            lhs.name == rhs.name &&
+            lhs.configuration == rhs.configuration
     }
 }
 
-extension Session: Equatable {
-    public static func == (lhs: Session, rhs: Session) -> Bool {
-        return lhs.token == rhs.token &&
-                lhs.token == rhs.token &&
-                lhs.name == rhs.name &&
-                lhs.configuration == rhs.configuration
+extension Session.Configuration: Equatable {
+    public static func == (lhs: Session.Configuration, rhs: Session.Configuration) -> Bool {
+        return lhs.ID == rhs.ID &&
+            lhs.isPlayerAllowedToShow == rhs.isPlayerAllowedToShow &&
+            lhs.isPlayerAllowedToShow == rhs.isPlayerAllowedToShow &&
+            lhs.isPlayerAllowedToReset == rhs.isPlayerAllowedToReset &&
+            lhs.isPlayerAllowedToAmendSession == rhs.isPlayerAllowedToAmendSession &&
+            lhs.isObserverAllowedToShow == rhs.isObserverAllowedToShow &&
+            lhs.isObserverAllowedToReset == rhs.isObserverAllowedToReset
     }
 }

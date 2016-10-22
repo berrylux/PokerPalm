@@ -7,7 +7,7 @@ public struct Story: Identifiable {
     public var endTime: Date?
     public var users: [User]
     public var votes: [Vote]
-
+    
     public init(ID: UUID = UUID(),
                 storyDescription: String,
                 startTime: Date,
@@ -25,10 +25,11 @@ public struct Story: Identifiable {
 
 extension Story: Equatable {
     public static func == (lhs: Story, rhs: Story) -> Bool {
-        return lhs.storyDescription == rhs.storyDescription &&
-                lhs.storyDescription == rhs.storyDescription &&
-                lhs.startTime == rhs.startTime &&
-                lhs.endTime == rhs.endTime &&
-                lhs.users == rhs.users
+        return lhs.ID == rhs.ID &&
+            lhs.storyDescription == rhs.storyDescription &&
+            lhs.storyDescription == rhs.storyDescription &&
+            lhs.startTime == rhs.startTime &&
+            lhs.endTime == rhs.endTime &&
+            lhs.users == rhs.users
     }
 }

@@ -285,12 +285,12 @@
 		D237BE571DB4117E00128623 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				D237BE761DB411C300128623 /* Entities.swift */,
-				D237BE781DB6D02700128623 /* Utilities */,
-				D237BE741DB411B600128623 /* UseCases.swift */,
 				D237BE581DB4117E00128623 /* Domain.h */,
 				D237BE591DB4117E00128623 /* Info.plist */,
+				D237BE761DB411C300128623 /* Entities.swift */,
+				D237BE741DB411B600128623 /* UseCases.swift */,
 				515F984506DC0950119CE4AE /* Entities */,
+				D237BE781DB6D02700128623 /* Utilities */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
