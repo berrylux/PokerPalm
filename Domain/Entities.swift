@@ -7,22 +7,21 @@
 //
 
 import Foundation
-//public struct SessionBuilder {
-//
-//}
-protocol Identifiable {
+import RxSwift
+
+public protocol Identifiable {
     var ID: UUID { get }
 }
 
 public struct Session: Identifiable {
-    let ID = UUID()
-    let token: String
-    var name: String
-    var configuration: Configuration
-    var stories: [Story]
+    public let ID = UUID()
+    public let token: String
+    public var name: String
+    public var configuration: Configuration
+    public var stories: [Story]
 
     public struct Configuration: Identifiable { // TODO: refactor
-        let ID: UUID
+        public let ID: UUID
         var isPlayerAllowedToShow: Bool
         var isPlayerAllowedToReset: Bool
         var isPlayerAllowedToAmmendSession: Bool
@@ -36,7 +35,7 @@ public struct Session: Identifiable {
              isObserverAllowedToShow: Bool = true,
              isObserverAllowedToReset: Bool = true,
              isObserverAllowedToAmmendSession: Bool = true) {
-            ID = UUID()
+            self.ID = UUID()
             self.isPlayerAllowedToShow = isPlayerAllowedToShow
             self.isPlayerAllowedToReset = isPlayerAllowedToReset
             self.isPlayerAllowedToAmmendSession = isPlayerAllowedToAmmendSession
@@ -55,36 +54,59 @@ public extension Session {
 }
 
 public struct Story: Identifiable {
-    let ID = UUID()
-    var description: String?
-    let startTime: Date
-    var endTime: Date?
-    var users: [User]
-    var votes: [Vote]
+    public let ID = UUID()
+    public var description: String?
+    public let startTime: Date
+    public var endTime: Date?
+    public var users: [User]
+    public var votes: [Vote]
 }
 
 public struct Vote: Identifiable {
-    let ID = UUID()
-    var user: User
+    public let ID = UUID()
+    public var user: User
 }
 
 
 public struct User: Identifiable {
-    let ID = UUID()
-    let role: Role
-    let name: String
-
-    public enum Role {
+    public let ID: UUID
+    public let role: Role
+    public let name: String
+    
+    public init(ID: UUID, role: Role, name: String) {
+        self.ID = ID
+        self.role = role
+        self.name = name
+    }
+    
+    public enum Role: Int {
         case player
         case observer
     }
 }
 
-import RxSwift
-public protocol Repository {
-    func query<T>(_ type: T.Type, predicate: NSPredicate) -> Observable<[T]>
-    func queryFirst<T>(_ type: T.Type, predicate: NSPredicate) -> Observable<T?>
-    func save<T>(_ object: T) -> Observable<T>
+protocol RepositoryType {
+    associatedtype T
+    
+    func query(_ type: T.Type, with predicate: NSPredicate) -> Observable<[T]>
+    func queryFirst(_ type: T.Type, with predicate: NSPredicate) -> Observable<T?>
+    func save(_ object: T) -> Observable<T>
+}
+
+public protocol UserRepository {
+    typealias T = User
+    
+    func query(_ type: T.Type, predicate: NSPredicate) -> Observable<[T]>
+    func queryFirst(_ type: T.Type, predicate: NSPredicate) -> Observable<T?>
+    func save(_ object: T) -> Observable<T>
+}
+
+public protocol SessionRepository {
+    typealias T = Session
+    
+    func query(_ type: T.Type, predicate: NSPredicate) -> Observable<[T]>
+    func queryFirst(_ type: T.Type, predicate: NSPredicate) -> Observable<T?>
+    func save(_ object: T) -> Observable<T>
 }
 
 public protocol SessionIDGenerator {

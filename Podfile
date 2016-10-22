@@ -3,17 +3,26 @@
 
 use_frameworks!
 
+def domain_pods
+    pod 'RxSwift', '3.0.0-rc.1'
+end
+
 target 'PokerPalm' do
-  pod 'RxSwift', '3.0.0-beta.2'
-  pod 'RxCocoa', '3.0.0-beta.2'
+  domain_pods
+  pod 'RxCocoa', '3.0.0-rc.1'
 
 end
 
 target 'Platform' do
   pod 'RealmSwift'
-  pod 'RxSwift', '3.0.0-beta.2'
+  pod 'RxRealm', '~> 0.2.6'
+  domain_pods
 end
 
 target 'Domain' do
-  pod 'RxSwift', '3.0.0-beta.2'
+  domain_pods
+  target 'DomainTests' do
+      inherit! :search_paths
+      pod 'RxTest', '3.0.0-rc.1'
+  end
 end

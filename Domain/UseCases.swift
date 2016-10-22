@@ -25,7 +25,7 @@ public enum UseCaseState<T> {
 public class CreateSessionUseCase: UseCase {
     public struct Services {
         let sessionIDGenerator: SessionIDGenerator
-        let repository: Repository
+        let repository: SessionRepository
     }
 
     public  struct Input {
