@@ -4,8 +4,8 @@ public struct User {
     public let ID: UUID
     public let role: Role
     public let name: String
-    
-    public init(ID: UUID = UUID(), role: Role, name: String) {
+
+    public init(ID: UUID, role: Role, name: String) {
         self.ID = ID
         self.role = role
         self.name = name

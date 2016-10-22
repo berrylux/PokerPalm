@@ -4,7 +4,7 @@ public struct Vote: Identifiable {
     public let ID: UUID
     public var user: User
 
-    public init(ID: UUID = UUID(), user: User) {
+    public init(ID: UUID, user: User) {
         self.ID = ID
         self.user = user
     }
