@@ -64,8 +64,12 @@ public struct Story: Identifiable {
 }
 
 public struct Vote: Identifiable {
-    public let ID = UUID()
+    public let ID: UUID
     public var user: User
+    public init(ID: UUID = UUID(), user: User) {
+        self.ID = ID
+        self.user = user
+    }
 }
 
 
@@ -74,7 +78,7 @@ public struct User: Identifiable {
     public let role: Role
     public let name: String
     
-    public init(ID: UUID, role: Role, name: String) {
+    public init(ID: UUID = UUID(), role: Role, name: String) {
         self.ID = ID
         self.role = role
         self.name = name

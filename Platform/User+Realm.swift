@@ -2,24 +2,27 @@ import Foundation
 import Domain
 import RealmSwift
 
-class RealmUser: Object {
+class RealmUser: Object, DomainConvertible {
     dynamic var ID: String = ""
     dynamic var role: Int = 0
     dynamic var name: String = ""
     
-    func asUser() -> User {
-        let role = User.Role.init(rawValue: self.role) ?? User.Role.player
-        return User(ID: UUID(uuidString: self.ID) ?? UUID(),
+    func asDomain() -> User {
+        let role = User.Role.init(rawValue: self.role)!
+
+        return User(ID: UUID(uuidString: self.ID)!,
             role: role,
             name: self.name)
     }
-    
-    func from(_ user: User) -> RealmUser {
+}
+
+extension User: RealmConvertible {
+    func asRealm() -> RealmUser {
         let realmUser = RealmUser()
-        realmUser.ID = user.ID.uuidString
-        realmUser.role = user.role.rawValue
-        realmUser.name = user.name
-        
+        realmUser.ID = ID.uuidString
+        realmUser.role = role.rawValue
+        realmUser.name = name
+
         return realmUser
     }
 }

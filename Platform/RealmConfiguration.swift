@@ -3,7 +3,7 @@ import Domain
 import RealmSwift
 
 
-class RealmConfiguration: Object, DomainConvertible {
+class RealmSessionConfiguration: Object, DomainConvertible {
     dynamic var ID: String = ""
     dynamic var isPlayerAllowedToShow: Bool = false
     dynamic var isPlayerAllowedToReset: Bool = false
@@ -12,7 +12,7 @@ class RealmConfiguration: Object, DomainConvertible {
     dynamic var isObserverAllowedToReset: Bool = false
     dynamic var isObserverAllowedToAmendSession: Bool = false
 
-    func asEntity() -> Session.Configuration {
+    func asDomain() -> Session.Configuration {
         return Session.Configuration(
                 ID: UUID(uuidString: ID)!,
                 isPlayerAllowedToShow: isPlayerAllowedToShow,
@@ -22,15 +22,18 @@ class RealmConfiguration: Object, DomainConvertible {
                 isObserverAllowedToReset: isObserverAllowedToReset,
                 isObserverAllowedToAmendSession: isObserverAllowedToAmendSession)
     }
+}
 
-    func from(_ entity: Session.Configuration) {
-        let realmObject = RealmConfiguration()
-        realmObject.ID = entity.ID.uuidString
-        realmObject.isPlayerAllowedToShow = entity.isPlayerAllowedToShow
-        realmObject.isPlayerAllowedToReset = entity.isPlayerAllowedToReset
-        realmObject.isPlayerAllowedToAmendSession = entity.isPlayerAllowedToAmendSession
-        realmObject.isObserverAllowedToShow = entity.isObserverAllowedToShow
-        realmObject.isObserverAllowedToReset = entity.isObserverAllowedToReset
-        realmObject.isObserverAllowedToAmendSession = entity.isObserverAllowedToAmendSession
+extension Session.Configuration: RealmConvertible {
+    func asRealm() -> RealmSessionConfiguration {
+        let realmObject = RealmSessionConfiguration()
+        realmObject.ID = ID.uuidString
+        realmObject.isPlayerAllowedToShow = isPlayerAllowedToShow
+        realmObject.isPlayerAllowedToReset = isPlayerAllowedToReset
+        realmObject.isPlayerAllowedToAmendSession = isPlayerAllowedToAmendSession
+        realmObject.isObserverAllowedToShow = isObserverAllowedToShow
+        realmObject.isObserverAllowedToReset = isObserverAllowedToReset
+        realmObject.isObserverAllowedToAmendSession = isObserverAllowedToAmendSession
+        return realmObject
     }
 }
