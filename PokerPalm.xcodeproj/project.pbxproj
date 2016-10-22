@@ -14,7 +14,11 @@
 		2512A9671DBABE47002E1104 /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2512A9661DBABE47002E1104 /* RealmUser.swift */; };
 		252E28651DBBC6FE0062C9C3 /* RealmSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252E28641DBBC6FE0062C9C3 /* RealmSession.swift */; };
 		515F95C458D98F99C69A8A61 /* Story+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9D06C73668A31BFC125B /* Story+Realm.swift */; };
+		515F97A57A1D001FE5970FC5 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9FEB00C708D3C5F77EE0 /* Story.swift */; };
+		515F9AFFB45BE95BA924F09B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9B507E8A20B64D925D2D /* Session.swift */; };
+		515F9B25C5D3530E4EBBA464 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F99BC0DFF1CD780B7E569 /* User.swift */; };
 		515F9E4638AE84116EF40E15 /* List+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F96BA01CB7688B6B1D97F /* List+Extensions.swift */; };
+		515F9FD370E2A29E5C059BAA /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92E8171D9888B2F6C75B /* Vote.swift */; };
 		7124C97608383221B82DC31F /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AF32E8F8DCD13BAA5E153 /* Pods_Domain.framework */; };
 		886A43B328F76B7330131569 /* RealmConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A49E79685B5AC8281970A /* RealmConvertible.swift */; };
 		886A461583DF59C01BB30354 /* RealmVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A4DC1BA60A7BF45E1706E /* RealmVote.swift */; };
@@ -90,8 +94,12 @@
 		25A163673E66C32C078D53BF /* Pods-Domain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Domain/Pods-Domain.debug.xcconfig"; sourceTree = "<group>"; };
 		388F0D90442CEEE830B84BBB /* Pods-DomainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CAEF90DE1DEB6101571D96F /* Pods_Platform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Platform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		515F92E8171D9888B2F6C75B /* Vote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		515F96BA01CB7688B6B1D97F /* List+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "List+Extensions.swift"; sourceTree = "<group>"; };
+		515F99BC0DFF1CD780B7E569 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		515F9B507E8A20B64D925D2D /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		515F9D06C73668A31BFC125B /* Story+Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Story+Realm.swift"; sourceTree = "<group>"; };
+		515F9FEB00C708D3C5F77EE0 /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		5D28C09F1AE1FB34328B34C5 /* Pods-DomainTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests.release.xcconfig"; sourceTree = "<group>"; };
 		774B384527D6FDA991C10B79 /* Pods_PokerPalm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerPalm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C07576B639E64EA6EF98B74 /* Pods-Platform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Platform/Pods-Platform.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +199,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		515F984506DC0950119CE4AE /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				515F9B507E8A20B64D925D2D /* Session.swift */,
+				515F9FEB00C708D3C5F77EE0 /* Story.swift */,
+				515F92E8171D9888B2F6C75B /* Vote.swift */,
+				515F99BC0DFF1CD780B7E569 /* User.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		886A40F84C79B317A3FE3B7D /* EntityConversion */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +290,7 @@
 				D237BE741DB411B600128623 /* UseCases.swift */,
 				D237BE581DB4117E00128623 /* Domain.h */,
 				D237BE591DB4117E00128623 /* Info.plist */,
+				515F984506DC0950119CE4AE /* Entities */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -675,6 +695,10 @@
 				D237BE7E1DB6D03E00128623 /* Predicate.swift in Sources */,
 				D237BE751DB411B600128623 /* UseCases.swift in Sources */,
 				D237BE7D1DB6D03E00128623 /* Expression.swift in Sources */,
+				515F9AFFB45BE95BA924F09B /* Session.swift in Sources */,
+				515F97A57A1D001FE5970FC5 /* Story.swift in Sources */,
+				515F9FD370E2A29E5C059BAA /* Vote.swift in Sources */,
+				515F9B25C5D3530E4EBBA464 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
