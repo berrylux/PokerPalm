@@ -14,6 +14,8 @@
 		2512A9671DBABE47002E1104 /* User+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2512A9661DBABE47002E1104 /* User+Realm.swift */; };
 		252E28651DBBC6FE0062C9C3 /* Session+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252E28641DBBC6FE0062C9C3 /* Session+Realm.swift */; };
 		7124C97608383221B82DC31F /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AF32E8F8DCD13BAA5E153 /* Pods_Domain.framework */; };
+		886A4180BC1F2B4F3837EFF5 /* RealmObject+DomainConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A476466E9D8B4A5207C8D /* RealmObject+DomainConvertible.swift */; };
+		886A4D1B69304FB319879FB1 /* Configuration+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A44D075F22C4A9D201198 /* Configuration+Realm.swift */; };
 		A425EFF21163E8653059E81D /* Pods_PokerPalm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774B384527D6FDA991C10B79 /* Pods_PokerPalm.framework */; };
 		AE56848936F398686028A9CC /* Pods_Platform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CAEF90DE1DEB6101571D96F /* Pods_Platform.framework */; };
 		D237BE401DB40FA800128623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237BE3F1DB40FA800128623 /* AppDelegate.swift */; };
@@ -87,6 +89,8 @@
 		5D28C09F1AE1FB34328B34C5 /* Pods-DomainTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests.release.xcconfig"; sourceTree = "<group>"; };
 		774B384527D6FDA991C10B79 /* Pods_PokerPalm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerPalm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C07576B639E64EA6EF98B74 /* Pods-Platform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Platform/Pods-Platform.debug.xcconfig"; sourceTree = "<group>"; };
+		886A44D075F22C4A9D201198 /* Configuration+Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Configuration+Realm.swift"; sourceTree = "<group>"; };
+		886A476466E9D8B4A5207C8D /* RealmObject+DomainConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RealmObject+DomainConvertible.swift"; sourceTree = "<group>"; };
 		989BC68AB4FAA6622A885F2A /* Pods-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.release.xcconfig"; path = "Pods/Target Support Files/Pods-Domain/Pods-Domain.release.xcconfig"; sourceTree = "<group>"; };
 		C63262C538D271BBA7981169 /* Pods-Platform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platform.release.xcconfig"; path = "Pods/Target Support Files/Pods-Platform/Pods-Platform.release.xcconfig"; sourceTree = "<group>"; };
 		CF92B5CA796B52821036C7C3 /* Pods_DomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +249,8 @@
 				D237BE6B1DB4118700128623 /* Info.plist */,
 				2512A9661DBABE47002E1104 /* User+Realm.swift */,
 				252E28641DBBC6FE0062C9C3 /* Session+Realm.swift */,
+				886A44D075F22C4A9D201198 /* Configuration+Realm.swift */,
+				886A476466E9D8B4A5207C8D /* RealmObject+DomainConvertible.swift */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -642,6 +648,8 @@
 			files = (
 				252E28651DBBC6FE0062C9C3 /* Session+Realm.swift in Sources */,
 				2512A9671DBABE47002E1104 /* User+Realm.swift in Sources */,
+				886A4D1B69304FB319879FB1 /* Configuration+Realm.swift in Sources */,
+				886A4180BC1F2B4F3837EFF5 /* RealmObject+DomainConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,26 +22,27 @@ public struct Session: Identifiable {
 
     public struct Configuration: Identifiable { // TODO: refactor
         public let ID: UUID
-        var isPlayerAllowedToShow: Bool
-        var isPlayerAllowedToReset: Bool
-        var isPlayerAllowedToAmmendSession: Bool
-        var isObserverAllowedToShow: Bool
-        var isObserverAllowedToReset: Bool
-        var isObserverAllowedToAmmendSession: Bool
+        public var isPlayerAllowedToShow: Bool
+        public var isPlayerAllowedToReset: Bool
+        public var isPlayerAllowedToAmendSession: Bool
+        public var isObserverAllowedToShow: Bool
+        public var isObserverAllowedToReset: Bool
+        public var isObserverAllowedToAmendSession: Bool
 
-        init(isPlayerAllowedToShow: Bool = true,
+        public init(ID: UUID = UUID(),
+             isPlayerAllowedToShow: Bool = true,
              isPlayerAllowedToReset: Bool = true,
-             isPlayerAllowedToAmmendSession: Bool = true,
+             isPlayerAllowedToAmendSession: Bool = true,
              isObserverAllowedToShow: Bool = true,
              isObserverAllowedToReset: Bool = true,
-             isObserverAllowedToAmmendSession: Bool = true) {
-            self.ID = UUID()
+             isObserverAllowedToAmendSession: Bool = true) {
+            self.ID = ID
             self.isPlayerAllowedToShow = isPlayerAllowedToShow
             self.isPlayerAllowedToReset = isPlayerAllowedToReset
-            self.isPlayerAllowedToAmmendSession = isPlayerAllowedToAmmendSession
+            self.isPlayerAllowedToAmendSession = isPlayerAllowedToAmendSession
             self.isObserverAllowedToShow = isObserverAllowedToShow
             self.isObserverAllowedToReset = isObserverAllowedToReset
-            self.isObserverAllowedToAmmendSession = isObserverAllowedToAmmendSession
+            self.isObserverAllowedToAmendSession = isObserverAllowedToAmendSession
         }
     }
 }
