@@ -14,11 +14,23 @@ public protocol Identifiable {
 }
 
 public struct Session: Identifiable {
-    public let ID = UUID()
-    public let token: String
+    public let ID: UUID
+    public var token: String
     public var name: String
     public var configuration: Configuration
     public var stories: [Story]
+
+    public init(ID: UUID = UUID(),
+                token: String,
+                name: String,
+                configuration: Configuration,
+                stories: [Story]) {
+        self.ID = ID
+        self.token = token
+        self.name = name
+        self.configuration = configuration
+        self.stories = stories
+    }
 
     public struct Configuration: Identifiable { // TODO: refactor
         public let ID: UUID
@@ -55,17 +67,32 @@ public extension Session {
 }
 
 public struct Story: Identifiable {
-    public let ID = UUID()
-    public var description: String?
-    public let startTime: Date
+    public let ID: UUID
+    public var storyDescription: String
+    public var startTime: Date
     public var endTime: Date?
     public var users: [User]
     public var votes: [Vote]
+    
+    public init(ID: UUID = UUID(),
+        storyDescription: String,
+        startTime: Date,
+        endTime: Date?,
+        users: [User],
+        votes: [Vote]) {
+        self.ID = ID
+        self.storyDescription = storyDescription
+        self.startTime = startTime
+        self.endTime = endTime
+        self.users = users
+        self.votes = votes
+    }
 }
 
 public struct Vote: Identifiable {
     public let ID: UUID
     public var user: User
+    
     public init(ID: UUID = UUID(), user: User) {
         self.ID = ID
         self.user = user

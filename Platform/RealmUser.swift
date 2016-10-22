@@ -2,7 +2,7 @@ import Foundation
 import Domain
 import RealmSwift
 
-class RealmUser: Object, DomainConvertible {
+final class RealmUser: Object, DomainConvertible {
     dynamic var ID: String = ""
     dynamic var role: Int = 0
     dynamic var name: String = ""

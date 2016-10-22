@@ -69,12 +69,11 @@ public class CreateSessionUseCase: UseCase {
     }
 
     private static func makeSession(with token: String, user: User) -> Session {
-        let story = Story(
-                description: nil,
-                startTime: Date(),
-                endTime: nil,
-                users: [user],
-                votes: [])
+        let story = Story(storyDescription: "",
+                          startTime: Date(),
+                          endTime: nil,
+                          users: [user],
+                          votes: [])
         return Session(
                 token: token,
                 name: token,
