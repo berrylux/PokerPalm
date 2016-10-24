@@ -24,7 +24,7 @@ public enum UseCaseState<T> {
 
 public class CreateSessionUseCase: UseCase {
     public struct Services {
-        let sessionIDGenerator: SessionIDGenerator
+        let sessionIDGenerator: TokenGenerator
         let repository: SessionRepository
     }
 
@@ -50,22 +50,33 @@ public class CreateSessionUseCase: UseCase {
 
     private static func generateSession(user: User, services: Services)  -> Observable<Session> {
         return Observable.just(services.sessionIDGenerator.generate())
-            .flatMapLatest { name -> Observable<(String, Session?)> in
-                let predicate: NSPredicate = Session.ID == name
-                let justName = Observable.just(name)
-                let session = services.repository.queryFirst(Session.self,
-                        predicate: predicate)
-                return Observable.zip(justName, session) { (name, session) in
-                    return (name, session)
-                }
+            .flatMapLatest(findSession(with: services))
+            .flatMapLatest(makeOrGenerateSession(with: services, for: user))
+    }
+
+    private  static func findSession(with services: Services)
+                    -> (String)
+                    -> Observable<(String, Session?)> {
+        return { name in
+            let justName = Observable.just(name)
+            let session = services.repository.queryFirst(Session.self, predicate: Session.ID == name)
+
+            return Observable.zip(justName, session) { (name, session) in
+                return (name, session)
             }
-            .flatMapLatest { (name, session) -> Observable<Session> in
-                if session == nil {
-                    let session = makeSession(with: name, user: user)
-                    return Observable.just(session)
-                }
-                return generateSession(user: user, services: services)
+        }
+    }
+
+    private  static  func makeOrGenerateSession(with services: Services, for user: User)
+                    -> ((String, Session?))
+                    -> Observable<Session> {
+        return { (name, session) in
+            if session == nil {
+                let session = makeSession(with: name, user: user)
+                return Observable.just(session)
             }
+            return generateSession(user: user, services: services)
+        }
     }
 
     private static func makeSession(with token: String, user: User) -> Session {

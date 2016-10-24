@@ -37,7 +37,7 @@ public protocol SessionRepository {
     func save(_ object: T) -> Observable<T>
 }
 
-public protocol SessionIDGenerator {
+public protocol TokenGenerator {
     func generate() -> String
 }
 
