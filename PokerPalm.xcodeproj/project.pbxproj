@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0DC7EB2010DAFE346B59CC20 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF92B5CA796B52821036C7C3 /* Pods_DomainTests.framework */; };
-		2512A95B1DBAAA21002E1104 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2512A95A1DBAAA21002E1104 /* DomainTests.swift */; };
 		2512A95D1DBAAA21002E1104 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D237BE561DB4117E00128623 /* Domain.framework */; };
 		2512A9641DBAAD3A002E1104 /* CreateSessionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2512A9631DBAAD3A002E1104 /* CreateSessionUseCase.swift */; };
 		2512A9671DBABE47002E1104 /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2512A9661DBABE47002E1104 /* RealmUser.swift */; };
@@ -86,7 +85,6 @@
 
 /* Begin PBXFileReference section */
 		2512A9581DBAAA21002E1104 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2512A95A1DBAAA21002E1104 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		2512A95C1DBAAA21002E1104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2512A9631DBAAD3A002E1104 /* CreateSessionUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionUseCase.swift; sourceTree = "<group>"; };
 		2512A9661DBABE47002E1104 /* RealmUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 		2512A9591DBAAA21002E1104 /* DomainTests */ = {
 			isa = PBXGroup;
 			children = (
-				2512A95A1DBAAA21002E1104 /* DomainTests.swift */,
 				2512A95C1DBAAA21002E1104 /* Info.plist */,
 				2512A9631DBAAD3A002E1104 /* CreateSessionUseCase.swift */,
 			);
@@ -672,7 +669,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2512A9641DBAAD3A002E1104 /* CreateSessionUseCase.swift in Sources */,
-				2512A95B1DBAAA21002E1104 /* DomainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

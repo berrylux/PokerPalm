@@ -5,14 +5,15 @@
 
 import Foundation
 
+
 public struct Session: Identifiable {
     public let ID: UUID
     public var token: String
     public var name: String
     public var configuration: Configuration
     public var stories: [Story]
-    
-    public init(ID: UUID = UUID(),
+
+    public init(ID: UUID,
                 token: String,
                 name: String,
                 configuration: Configuration,
@@ -32,8 +33,8 @@ public struct Session: Identifiable {
         public var isObserverAllowedToShow: Bool
         public var isObserverAllowedToReset: Bool
         public var isObserverAllowedToAmendSession: Bool
-        
-        public init(ID: UUID = UUID(),
+
+        public init(ID: UUID,
                     isPlayerAllowedToShow: Bool = true,
                     isPlayerAllowedToReset: Bool = true,
                     isPlayerAllowedToAmendSession: Bool = true,

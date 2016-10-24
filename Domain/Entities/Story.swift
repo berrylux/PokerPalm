@@ -7,8 +7,8 @@ public struct Story: Identifiable {
     public var endTime: Date?
     public var users: [User]
     public var votes: [Vote]
-    
-    public init(ID: UUID = UUID(),
+
+    public init(ID: UUID,
                 storyDescription: String,
                 startTime: Date,
                 endTime: Date?,
