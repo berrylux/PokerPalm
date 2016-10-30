@@ -17,6 +17,11 @@ target 'Platform' do
   pod 'RealmSwift'
   pod 'RxRealm', '~> 0.2.6'
   domain_pods
+  target 'PlatformTests' do
+    inherit! :search_paths
+    pod 'RxTest', '3.0.0-rc.1'
+    pod 'Nimble', '5.1.0'
+  end
 end
 
 target 'Domain' do

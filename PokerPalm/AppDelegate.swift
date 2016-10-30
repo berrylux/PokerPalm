@@ -7,16 +7,38 @@
 //
 
 import UIKit
+import RxSwift
+import Domain
+import Platform
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var testObserver: AnyObserver<UseCaseState<Session>> {
+        return AnyObserver { event in
 
+        }
+    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        Repository.sync(URL(string: "http://127.0.0.1:9080")!, "common@example.com", "example").subscribe(onNext: {
+            let input = CreateSessionUseCase.Input(user: User(ID: UUID(), role: .player, name: "Bob"), trigger: Observable.just())
+            let services = CreateSessionUseCase.Services(sessionIDGenerator: UUIDTokenGenerator(), repository: Repository.session)
+            CreateSessionUseCase.assebmle(input: input, service: services, output: self.testObserver)
+        }, onError: { error in
+
+        })
+//        let trigger = Repository.sync(URL(string: "http://127.0.0.1:9080")!, "common@example.com", "example")
+
+
         return true
+    }
+
+    class UUIDTokenGenerator: TokenGenerator {
+        func generate() -> String {
+            return UUID().uuidString
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

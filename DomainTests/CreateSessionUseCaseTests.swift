@@ -49,7 +49,7 @@ class CreateSessionUseCaseTests: XCTestCase {
         let token = tokenGenerator.generate()
         let expectedSession = Session.dummy(with:testUUID, token, user)
 
-        let testableObserver = scheduler.createObserver(UseCaseState<Session>)
+        let testableObserver = scheduler.createObserver(UseCaseState<Session>.self)
 
         _ = CreateSessionUseCase.assebmle(
                 input: CreateSessionUseCase.Input(user: user, trigger: trigger),

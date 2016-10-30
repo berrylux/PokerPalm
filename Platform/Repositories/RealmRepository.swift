@@ -5,9 +5,13 @@ import RxSwift
 import RxRealm
 
 class RealmRepository<T: RealmConvertible & Identifiable>: AbstractRepository<T> where T == T.RealmType.DomainType {
-    
-    func query(with predicate: NSPredicate) -> Observable<[T]> {
-        let realm = try! Realm()
+    init(_ configuration: Realm.Configuration) {
+        self.configuration = configuration
+        super.init()
+    }
+    let configuration: Realm.Configuration
+    override func query(with predicate: NSPredicate) -> Observable<[T]> {
+        let realm = try! Realm(configuration: configuration)
         let objects = realm.objects(T.RealmType.self).filter(predicate)
 
         return Observable.arrayFrom(objects)
@@ -18,20 +22,20 @@ class RealmRepository<T: RealmConvertible & Identifiable>: AbstractRepository<T>
             }
     }
     
-    func queryFirst(with predicate: NSPredicate) -> Observable<T?> {
+    override func queryFirst(with predicate: NSPredicate) -> Observable<T?> {
         return query(with: predicate)
                 .map {
                     $0.first
                 }
     }
     
-    func save(_ object: T) -> Observable<T> {
-        let realm = try! Realm()
+    override func save(_ object: T) -> Observable<T> {
+        let realm = try! Realm(configuration: configuration)
         let realmObject = object.asRealm()
         try! realm.write {
             realm.add(realmObject)
         }
-        let object = realm.objects(T.RealmType.self).filter("SELF == \(realmObject)")
+        let object = realm.objects(T.RealmType.self).filter("ID == '\(object.ID.uuidString)'")
         return Observable.arrayFrom(object)
             .map {
                 return $0.first!.asDomain()

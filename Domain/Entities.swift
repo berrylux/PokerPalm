@@ -7,13 +7,16 @@ public protocol Identifiable {
 }
 
 open class AbstractRepository<T> {
-    func query(with predicate: NSPredicate) -> Observable<[T]> {
+    public init(){
+
+    }
+    open func query(with predicate: NSPredicate) -> Observable<[T]> {
         fatalError("Should")
     }
-    func queryFirst(with predicate: NSPredicate) -> Observable<T?> {
+    open func queryFirst(with predicate: NSPredicate) -> Observable<T?> {
         fatalError("Should")
     }
-    func save(_ object: T) -> Observable<T> {
+    open func save(_ object: T) -> Observable<T> {
         fatalError("Should")
     }
 

@@ -1,9 +1,9 @@
 import Foundation
 
-public struct User {
+public struct User: Identifiable {
     public let ID: UUID
     public let role: Role
-    public let name: String
+    public var name: String
 
     public init(ID: UUID, role: Role, name: String) {
         self.ID = ID

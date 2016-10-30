@@ -37,11 +37,19 @@ public class CreateSessionUseCase: UseCase {
     public struct Services {
         let sessionIDGenerator: TokenGenerator
         let repository: AbstractRepository<Session>
+        public init(sessionIDGenerator: TokenGenerator, repository: AbstractRepository<Session>) {
+            self.sessionIDGenerator = sessionIDGenerator
+            self.repository = repository
+        }
     }
 
-    public  struct Input {
+    public struct Input {
         let user: User
         let trigger: Observable<Void>
+        public init(user:User, trigger:Observable<Void>) {
+            self.user = user
+            self.trigger = trigger
+        }
     }
 
     public static func assebmle(input: Input,
