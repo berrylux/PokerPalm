@@ -11,6 +11,11 @@ class RealmStory: Object {
     let users: List<RealmUser> = List()
     let votes: List<RealmVote> = List()
 
+}
+
+extension RealmStory: DomainConvertible {
+    typealias RealmType = RealmStory
+    
     func asDomain() -> Story {
         let users = self.users.map {
             return $0.asDomain()
@@ -19,11 +24,11 @@ class RealmStory: Object {
             return $0.asDomain()
         }
         return Story(ID: UUID(uuidString: self.ID)!,
-                     storyDescription: self.storyDescription,
-                     startTime: self.startTime,
-                     endTime: self.endTime,
-                     users: users,
-                     votes: votes)
+                storyDescription: self.storyDescription,
+                startTime: self.startTime,
+                endTime: self.endTime,
+                users: users,
+                votes: votes)
     }
 }
 

@@ -1,7 +1,8 @@
 import Foundation
+import RealmSwift
 
 protocol RealmConvertible {
-    associatedtype RealmType
+    associatedtype RealmType: Object, DomainConvertible
 
     func asRealm() -> RealmType
 }

@@ -6,11 +6,11 @@ public protocol Identifiable {
     var ID: UUID { get }
 }
 
-public class AbstractRepository<T> {
-    func query(_ type: T.Type, with predicate: NSPredicate) -> Observable<[T]> {
+open class AbstractRepository<T> {
+    func query(with predicate: NSPredicate) -> Observable<[T]> {
         fatalError("Should")
     }
-    func queryFirst(_ type: T.Type, with predicate: NSPredicate) -> Observable<T?> {
+    func queryFirst(with predicate: NSPredicate) -> Observable<T?> {
         fatalError("Should")
     }
     func save(_ object: T) -> Observable<T> {
