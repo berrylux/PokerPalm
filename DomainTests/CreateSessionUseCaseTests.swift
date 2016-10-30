@@ -1,10 +1,7 @@
 import XCTest
 import RxSwift
 import RxTest
-
 @testable import Domain
-
-//
 
 class CreateSessionUseCaseTests: XCTestCase {
     
@@ -37,7 +34,7 @@ class CreateSessionUseCaseTests: XCTestCase {
 
         stubSessionRepository.uuidClosure = { testUUID }
         var didCheckSessionDoesntExist = false
-        stubSessionRepository.queryFirstClosure = { _, _ in
+        stubSessionRepository.queryFirstClosure = { _ in
             didCheckSessionDoesntExist = true
             return Observable.just(nil)
         }
@@ -92,16 +89,16 @@ extension Session {
 
 class StubSessionRepository: AbstractRepository<Session> {
 
-    var queryClosure: ((Session.Type, NSPredicate) -> Observable<[Session]>)?
-    var queryFirstClosure: ((Session.Type, NSPredicate) -> Observable<Session?>)!
+    var queryClosure: ((NSPredicate) -> Observable<[Session]>)?
+    var queryFirstClosure: ((NSPredicate) -> Observable<Session?>)!
     var saveClosure: ((Session) -> Observable<Session>)!
     var uuidClosure: (() -> UUID)!
 
-    override func query(_ type: Session.Type, with predicate: NSPredicate) -> Observable<[Session]> {
-        return queryClosure!(type, predicate)
+    override func query(with predicate: NSPredicate) -> Observable<[Session]> {
+        return queryClosure!(predicate)
     }
-    override func queryFirst(_ type: Session.Type, with predicate: NSPredicate) -> Observable<Session?> {
-        return queryFirstClosure(type, predicate)
+    override func queryFirst(with predicate: NSPredicate) -> Observable<Session?> {
+        return queryFirstClosure(predicate)
     }
     override func save(_ object: Session) -> Observable<Session> {
         return saveClosure(object)
@@ -111,24 +108,3 @@ class StubSessionRepository: AbstractRepository<Session> {
         return uuidClosure()
     }
 }
-
-//class StubSessionRepository: SessionRepository {
-//    var queryClosure: ((Session.Type, NSPredicate) -> Observable<[Session]>)?
-//    var queryFirstClosure: ((Session.Type, NSPredicate) -> Observable<Session?>)!
-//    var saveClosure: ((Session) -> Observable<Session>)!
-//    var uuidClosure: (() -> UUID)!
-//
-//    func query(_ type: Session.Type, predicate: NSPredicate) -> Observable<[Session]> {
-//        return queryClosure!(type, predicate)
-//    }
-//    func queryFirst(_ type: Session.Type, predicate: NSPredicate) -> Observable<Session?> {
-//        return queryFirstClosure(type, predicate)
-//    }
-//    func save(_ object: Session) -> Observable<Session> {
-//        return saveClosure(object)
-//    }
-//
-//    func generateUUID() -> UUID {
-//        return uuidClosure()
-//    }
-//}

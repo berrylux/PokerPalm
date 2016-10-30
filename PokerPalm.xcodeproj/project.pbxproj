@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0DC7EB2010DAFE346B59CC20 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF92B5CA796B52821036C7C3 /* Pods_DomainTests.framework */; };
 		2512A95D1DBAAA21002E1104 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D237BE561DB4117E00128623 /* Domain.framework */; };
-		2512A9641DBAAD3A002E1104 /* CreateSessionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2512A9631DBAAD3A002E1104 /* CreateSessionUseCase.swift */; };
+		2512A9641DBAAD3A002E1104 /* CreateSessionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2512A9631DBAAD3A002E1104 /* CreateSessionUseCaseTests.swift */; };
 		2513191E1DC1719B00EF0971 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D237BE561DB4117E00128623 /* Domain.framework */; };
 		515F90731FA9F59AE40515BA /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F93920C478518236C986B /* RealmUser.swift */; };
 		515F90AEBDEC8F40C08E8C47 /* RealmVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9B878ACC9B2C823B9F62 /* RealmVote.swift */; };
@@ -88,7 +88,7 @@
 /* Begin PBXFileReference section */
 		2512A9581DBAAA21002E1104 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2512A95C1DBAAA21002E1104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2512A9631DBAAD3A002E1104 /* CreateSessionUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionUseCase.swift; sourceTree = "<group>"; };
+		2512A9631DBAAD3A002E1104 /* CreateSessionUseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionUseCaseTests.swift; sourceTree = "<group>"; };
 		25A163673E66C32C078D53BF /* Pods-Domain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Domain/Pods-Domain.debug.xcconfig"; sourceTree = "<group>"; };
 		388F0D90442CEEE830B84BBB /* Pods-DomainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CAEF90DE1DEB6101571D96F /* Pods_Platform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Platform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				2512A95C1DBAAA21002E1104 /* Info.plist */,
-				2512A9631DBAAD3A002E1104 /* CreateSessionUseCase.swift */,
+				2512A9631DBAAD3A002E1104 /* CreateSessionUseCaseTests.swift */,
 			);
 			path = DomainTests;
 			sourceTree = "<group>";
@@ -689,7 +689,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2512A9641DBAAD3A002E1104 /* CreateSessionUseCase.swift in Sources */,
+				2512A9641DBAAD3A002E1104 /* CreateSessionUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
