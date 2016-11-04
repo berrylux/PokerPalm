@@ -3,7 +3,7 @@ import RealmSwift
 import RxSwift
 import Domain
 
-public final class Repository {
+public final class Repositories: RepositoryFactory {
 
 
     private static func make<T: RealmConvertible & Identifiable>() -> AbstractRepository<T> where T == T.RealmType.DomainType {
@@ -20,16 +20,16 @@ public final class Repository {
         return RealmRepository(configuration)
     }
 
-    public static var user: AbstractRepository<User> {
+    public static var userRepository: AbstractRepository<User> {
         return make()
     }
 
-    public static var session: AbstractRepository<Session> {
+    public static var sessionRepository: AbstractRepository<Session> {
         return make()
     }
 
     private static var url: URL!
-    public static func sync(_ url:URL, _ username: String, _ password: String) -> Observable<Void> {
+    public static func sync(url:URL, username: String, password: String) -> Observable<Void> {
         return Observable.create { observer in
             SyncUser.authenticate(with: Credential.usernamePassword(username: username, password: password, actions: []), server: url, onCompletion: { user, error in
                 if user == nil {
@@ -39,8 +39,8 @@ public final class Repository {
                 } else {
                     self.url = url
                     observer.onNext()
+                    observer.onCompleted()
                 }
-                observer.onCompleted()
             })
             return Disposables.create()
         }

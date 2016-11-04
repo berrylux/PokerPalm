@@ -5,7 +5,13 @@ public protocol UseCase {
     associatedtype I
     associatedtype S
     associatedtype O
-    static func assebmle(input: I, service: S, output: O) -> Disposable
+    static func assemble(input: I, service: S, output: O) -> Disposable
+}
+
+public struct Empty: Equatable {
+    public static func == (lhs: Empty, rhs: Empty) -> Bool {
+        return true
+    }
 }
 
 public enum UseCaseState<T: Equatable>: Equatable{
@@ -33,6 +39,7 @@ public enum UseCaseState<T: Equatable>: Equatable{
     }
 }
 
+
 public class CreateSessionUseCase: UseCase {
     public struct Services {
         let sessionIDGenerator: TokenGenerator
@@ -52,16 +59,19 @@ public class CreateSessionUseCase: UseCase {
         }
     }
 
-    public static func assebmle(input: Input,
+    public static func assemble(input: Input,
                                 service: Services,
                                 output: AnyObserver<UseCaseState<Session>>) -> Disposable {
         return input.trigger
             .flatMapLatest {
                 return tryToMakeSession(user: input.user, services: service)
+                    .flatMapLatest(service.repository.save)
+                    .map(UseCaseState.succeeded)
+                    .startWith(UseCaseState.inProgress)
+                    .catchError { error in
+                        return Observable.just(UseCaseState.failed(error))
+                    }
             }
-            .flatMapLatest(service.repository.save)
-            .map(UseCaseState.succeeded)
-            .startWith(UseCaseState.inProgress)
             .subscribe(output)
     }
 

@@ -26,9 +26,12 @@
 		515F9FD370E2A29E5C059BAA /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92E8171D9888B2F6C75B /* Vote.swift */; };
 		7124C97608383221B82DC31F /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AF32E8F8DCD13BAA5E153 /* Pods_Domain.framework */; };
 		82AB1961C86D5B772C78AD9C /* Pods_PlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC002CB12EF8C42A6D74DF /* Pods_PlatformTests.framework */; };
+		886A4BFB1FAA3A0923267908 /* RepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A43767C77480CE7F2E159 /* RepositoryFactory.swift */; };
+		886A4D7B93167EFB34F39ED4 /* RepositorySyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A49304F19753D46B999CB /* RepositorySyncUseCase.swift */; };
+		886A4FF3B0D2B46A11152D98 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A41E46C8BD4F1FD161376 /* SplashViewController.swift */; };
 		A425EFF21163E8653059E81D /* Pods_PokerPalm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774B384527D6FDA991C10B79 /* Pods_PokerPalm.framework */; };
 		AE56848936F398686028A9CC /* Pods_Platform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CAEF90DE1DEB6101571D96F /* Pods_Platform.framework */; };
-		D23761D61DC6743900872F94 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A478498C9DB264B3CA561 /* Repository.swift */; };
+		D23761D61DC6743900872F94 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A478498C9DB264B3CA561 /* Repositories.swift */; };
 		D237BE401DB40FA800128623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237BE3F1DB40FA800128623 /* AppDelegate.swift */; };
 		D237BE421DB40FA800128623 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237BE411DB40FA800128623 /* ViewController.swift */; };
 		D237BE451DB40FA800128623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237BE431DB40FA800128623 /* Main.storyboard */; };
@@ -119,7 +122,10 @@
 		5D28C09F1AE1FB34328B34C5 /* Pods-DomainTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests.release.xcconfig"; sourceTree = "<group>"; };
 		774B384527D6FDA991C10B79 /* Pods_PokerPalm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerPalm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C07576B639E64EA6EF98B74 /* Pods-Platform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Platform/Pods-Platform.debug.xcconfig"; sourceTree = "<group>"; };
-		886A478498C9DB264B3CA561 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		886A41E46C8BD4F1FD161376 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		886A43767C77480CE7F2E159 /* RepositoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
+		886A478498C9DB264B3CA561 /* Repositories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
+		886A49304F19753D46B999CB /* RepositorySyncUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySyncUseCase.swift; sourceTree = "<group>"; };
 		9031B51C7FEDDC13F7513357 /* Pods-PlatformTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlatformTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlatformTests/Pods-PlatformTests.release.xcconfig"; sourceTree = "<group>"; };
 		989BC68AB4FAA6622A885F2A /* Pods-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.release.xcconfig"; path = "Pods/Target Support Files/Pods-Domain/Pods-Domain.release.xcconfig"; sourceTree = "<group>"; };
 		B775A4A999B84D39D3687472 /* Pods-PlatformTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlatformTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlatformTests/Pods-PlatformTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,7 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				515F927A7227F1BF7E83FE36 /* RealmRepository.swift */,
-				886A478498C9DB264B3CA561 /* Repository.swift */,
+				886A478498C9DB264B3CA561 /* Repositories.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -266,8 +272,25 @@
 				515F9FEB00C708D3C5F77EE0 /* Story.swift */,
 				515F92E8171D9888B2F6C75B /* Vote.swift */,
 				515F99BC0DFF1CD780B7E569 /* User.swift */,
+				886A43767C77480CE7F2E159 /* RepositoryFactory.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		886A4365C84D0C41AB4FC188 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				886A41E46C8BD4F1FD161376 /* SplashViewController.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		886A4D6D7E82E3BC0626B0F0 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				886A49304F19753D46B999CB /* RepositorySyncUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		88FCE064F1DA7ED2153F3E5D /* Frameworks */ = {
@@ -335,6 +358,7 @@
 				D237BE461DB40FA800128623 /* Assets.xcassets */,
 				D237BE481DB40FA800128623 /* LaunchScreen.storyboard */,
 				D237BE4B1DB40FA800128623 /* Info.plist */,
+				886A4365C84D0C41AB4FC188 /* SplashScreen */,
 			);
 			path = PokerPalm;
 			sourceTree = "<group>";
@@ -348,6 +372,7 @@
 				D237BE741DB411B600128623 /* UseCases.swift */,
 				515F984506DC0950119CE4AE /* Entities */,
 				D237BE781DB6D02700128623 /* Utilities */,
+				886A4D6D7E82E3BC0626B0F0 /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -827,6 +852,7 @@
 			files = (
 				D237BE421DB40FA800128623 /* ViewController.swift in Sources */,
 				D237BE401DB40FA800128623 /* AppDelegate.swift in Sources */,
+				886A4FF3B0D2B46A11152D98 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,6 +870,8 @@
 				515F97A57A1D001FE5970FC5 /* Story.swift in Sources */,
 				515F9FD370E2A29E5C059BAA /* Vote.swift in Sources */,
 				515F9B25C5D3530E4EBBA464 /* User.swift in Sources */,
+				886A4D7B93167EFB34F39ED4 /* RepositorySyncUseCase.swift in Sources */,
+				886A4BFB1FAA3A0923267908 /* RepositoryFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,7 +885,7 @@
 				515F90AEBDEC8F40C08E8C47 /* RealmVote.swift in Sources */,
 				515F9B955FD7D0BF7C65019C /* RealmSession.swift in Sources */,
 				515F980FFB2960D92A8535B5 /* RealmSessionConfiguration.swift in Sources */,
-				D23761D61DC6743900872F94 /* Repository.swift in Sources */,
+				D23761D61DC6743900872F94 /* Repositories.swift in Sources */,
 				515F9907955AC2DB6AEC8DF0 /* RealmConvertible.swift in Sources */,
 				515F94FAFDA656FD4C494C7C /* DomainConvertible.swift in Sources */,
 				515F94530AC0D406A02570BF /* RealmRepository.swift in Sources */,

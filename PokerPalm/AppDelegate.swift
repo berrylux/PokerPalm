@@ -22,13 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Repository.sync(URL(string: "http://127.0.0.1:9080")!, "common@example.com", "example").subscribe(onNext: {
-            let input = CreateSessionUseCase.Input(user: User(ID: UUID(), role: .player, name: "Bob"), trigger: Observable.just())
-            let services = CreateSessionUseCase.Services(sessionIDGenerator: UUIDTokenGenerator(), repository: Repository.session)
-            CreateSessionUseCase.assebmle(input: input, service: services, output: self.testObserver)
-        }, onError: { error in
-
-        })
+//        Repositories.sync(URL(string: "http://127.0.0.1:9080")!, "common@example.com", "example").subscribe(onNext: {
+//            let input = CreateSessionUseCase.Input(user: User(ID: UUID(), role: .player, name: "Bob"), trigger: Observable.just())
+//            let services = CreateSessionUseCase.Services(sessionIDGenerator: UUIDTokenGenerator(), repository: Repositories.sessionRepository)
+//            CreateSessionUseCase.assemble(input: input, service: services, output: self.testObserver)
+//        }, onError: { error in
+//
+//        })
 //        let trigger = Repository.sync(URL(string: "http://127.0.0.1:9080")!, "common@example.com", "example")
 
 

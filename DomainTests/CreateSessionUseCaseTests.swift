@@ -51,7 +51,7 @@ class CreateSessionUseCaseTests: XCTestCase {
 
         let testableObserver = scheduler.createObserver(UseCaseState<Session>.self)
 
-        _ = CreateSessionUseCase.assebmle(
+        _ = CreateSessionUseCase.assemble(
                 input: CreateSessionUseCase.Input(user: user, trigger: trigger),
                 service: CreateSessionUseCase.Services(sessionIDGenerator: tokenGenerator, repository: stubSessionRepository),
                 output: testableObserver.asObserver())
