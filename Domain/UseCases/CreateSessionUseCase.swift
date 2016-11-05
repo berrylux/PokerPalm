@@ -1,45 +1,6 @@
 import Foundation
 import RxSwift
 
-public protocol UseCase {
-    associatedtype I
-    associatedtype S
-    associatedtype O
-    static func assemble(input: I, service: S, output: O) -> Disposable
-}
-
-public struct Empty: Equatable {
-    public static func == (lhs: Empty, rhs: Empty) -> Bool {
-        return true
-    }
-}
-
-public enum UseCaseState<T: Equatable>: Equatable{
-    case inProgress
-    case succeeded(T)
-    case failed(Error)
-
-    public static func ==(lhs: UseCaseState, rhs: UseCaseState) -> Bool {
-        switch (lhs, rhs) {
-            case (.inProgress, .inProgress):
-                return true
-            case (.succeeded(let lhsValue), .succeeded(let rhsValue)):
-                 return lhsValue == rhsValue
-            case (.failed(let lhsError), .failed(let rhsError)):
-                if (lhsError as AnyObject) === (rhsError as AnyObject) {
-                    return true
-                }
-                if (lhsError as NSError) == (rhsError as NSError) {
-                    return true
-                }
-                return false
-            default:
-                return false
-        }
-    }
-}
-
-
 public class CreateSessionUseCase: UseCase {
     public struct Services {
         let sessionIDGenerator: TokenGenerator
@@ -73,6 +34,22 @@ public class CreateSessionUseCase: UseCase {
                     }
             }
             .subscribe(output)
+    }
+
+    public static func assemble(input: Input,
+                                service: Services) -> Observable<UseCaseState<Session>> {
+        return input.trigger
+            .flatMapLatest {
+                return tryToMakeSession(user: input.user, services: service)
+                    .flatMapLatest(service.repository.save)
+                    .map(UseCaseState.succeeded)
+                    .startWith(UseCaseState.inProgress)
+                    .catchError { error in
+                        return Observable.just(UseCaseState.failed(error))
+                    }
+            }
+            .shareReplayLatestWhileConnected()
+            .observeOn(MainScheduler.instance)
     }
 
     private static func tryToMakeSession(user: User, services: Services)  -> Observable<Session> {
