@@ -11,15 +11,15 @@
 		2512A95D1DBAAA21002E1104 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D237BE561DB4117E00128623 /* Domain.framework */; };
 		2512A9641DBAAD3A002E1104 /* CreateSessionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2512A9631DBAAD3A002E1104 /* CreateSessionUseCaseTests.swift */; };
 		2513191E1DC1719B00EF0971 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D237BE561DB4117E00128623 /* Domain.framework */; };
+		254E0FFC1DCE56200025CD4C /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F991E846F55CDA7035EA2 /* UseCase.swift */; };
+		254E0FFD1DCE56250025CD4C /* UseCaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9359EE7320E584AFA922 /* UseCaseState.swift */; };
+		254E0FFE1DCE564C0025CD4C /* CreateOrJoinSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F992AC097597E387740AD /* CreateOrJoinSessionViewController.swift */; };
 		515F90731FA9F59AE40515BA /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F93920C478518236C986B /* RealmUser.swift */; };
 		515F90AEBDEC8F40C08E8C47 /* RealmVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9B878ACC9B2C823B9F62 /* RealmVote.swift */; };
-		515F90E7A58CDCDBAAC39184 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F991E846F55CDA7035EA2 /* UseCase.swift */; };
 		515F94530AC0D406A02570BF /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F927A7227F1BF7E83FE36 /* RealmRepository.swift */; };
 		515F94FAFDA656FD4C494C7C /* DomainConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F929E4890821DBCABD3E2 /* DomainConvertible.swift */; };
 		515F97A57A1D001FE5970FC5 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9FEB00C708D3C5F77EE0 /* Story.swift */; };
 		515F980FFB2960D92A8535B5 /* RealmSessionConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F997E1EE6D3B592F4F15D /* RealmSessionConfiguration.swift */; };
-		515F98AF66C316FE6213E436 /* CreateOrJoinSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F992AC097597E387740AD /* CreateOrJoinSessionViewController.swift */; };
-		515F98FC95AE1B482CFB8F75 /* UseCaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9359EE7320E584AFA922 /* UseCaseState.swift */; };
 		515F9907955AC2DB6AEC8DF0 /* RealmConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F91D10AB08B62FBA6C4D6 /* RealmConvertible.swift */; };
 		515F9A2AE9B273928912EA92 /* RealmStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92B536BE466506A6FF2F /* RealmStory.swift */; };
 		515F9A4438C068C74DD362C1 /* CreateSessionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F98D4095B2ECA5446435A /* CreateSessionUseCase.swift */; };
@@ -869,6 +869,7 @@
 			files = (
 				D237BE421DB40FA800128623 /* ViewController.swift in Sources */,
 				D237BE401DB40FA800128623 /* AppDelegate.swift in Sources */,
+				254E0FFE1DCE564C0025CD4C /* CreateOrJoinSessionViewController.swift in Sources */,
 				886A4FF3B0D2B46A11152D98 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -880,9 +881,11 @@
 				D237BE7C1DB6D03E00128623 /* Attribute.swift in Sources */,
 				D237BE801DB6D15900128623 /* AttributeStringLiteral.swift in Sources */,
 				D237BE771DB411C300128623 /* Entities.swift in Sources */,
+				254E0FFD1DCE56250025CD4C /* UseCaseState.swift in Sources */,
 				D237BE7E1DB6D03E00128623 /* Predicate.swift in Sources */,
 				D237BE7D1DB6D03E00128623 /* Expression.swift in Sources */,
 				515F9AFFB45BE95BA924F09B /* Session.swift in Sources */,
+				254E0FFC1DCE56200025CD4C /* UseCase.swift in Sources */,
 				515F97A57A1D001FE5970FC5 /* Story.swift in Sources */,
 				515F9FD370E2A29E5C059BAA /* Vote.swift in Sources */,
 				515F9B25C5D3530E4EBBA464 /* User.swift in Sources */,
@@ -906,9 +909,6 @@
 				515F9907955AC2DB6AEC8DF0 /* RealmConvertible.swift in Sources */,
 				515F94FAFDA656FD4C494C7C /* DomainConvertible.swift in Sources */,
 				515F94530AC0D406A02570BF /* RealmRepository.swift in Sources */,
-				515F98AF66C316FE6213E436 /* CreateOrJoinSessionViewController.swift in Sources */,
-				515F90E7A58CDCDBAAC39184 /* UseCase.swift in Sources */,
-				515F98FC95AE1B482CFB8F75 /* UseCaseState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,7 +43,7 @@
         <!--Create Or Join Session View Controller-->
         <scene sceneID="44S-3L-Tar">
             <objects>
-                <viewController storyboardIdentifier="CreateOrJoinSessionViewController" id="6HJ-av-ZJC" customClass="CreateOrJoinSessionViewController" customModule="Platform" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateOrJoinSessionViewController" id="6HJ-av-ZJC" customClass="CreateOrJoinSessionViewController" customModule="PokerPalm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3pI-of-1Wf"/>
                         <viewControllerLayoutGuide type="bottom" id="dOn-Fa-ypW"/>
@@ -112,10 +112,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="createSessionButton" destination="2sM-p5-Pat" id="MBv-bi-heF"/>
-                        <outlet property="joinSessionButton" destination="SVF-ip-jkS" id="ucn-Mv-aRV"/>
-                        <outlet property="playerObserverSwitch" destination="d0c-eO-Hau" id="o7C-EG-s7p"/>
-                        <outlet property="tokenTextField" destination="74q-Rl-zDC" id="MLi-Jr-0Ll"/>
+                        <outlet property="createSessionButton" destination="2sM-p5-Pat" id="cry-tH-peQ"/>
+                        <outlet property="joinSessionButton" destination="SVF-ip-jkS" id="0vq-y1-S1p"/>
+                        <outlet property="playerObserverSwitch" destination="d0c-eO-Hau" id="1gR-47-Apd"/>
+                        <outlet property="tokenTextField" destination="74q-Rl-zDC" id="s4f-B4-yb4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbV-Kn-HxN" sceneMemberID="firstResponder"/>
