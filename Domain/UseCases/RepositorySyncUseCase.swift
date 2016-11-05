@@ -15,7 +15,7 @@ public final class RepositorySyncUseCase: UseCase {
             self.password = password
         }
     }
-
+    
     public static func assemble(input: RepositorySyncUseCase.Input, service repositoryFactory: RepositoryFactory.Type, output: AnyObserver<UseCaseState<Empty>>) -> Disposable {
         return input.trigger
                 .flatMapLatest {
@@ -29,6 +29,24 @@ public final class RepositorySyncUseCase: UseCase {
                             }
                 }
                 .subscribe(output)
+
+    }
+
+    public static func assemble(input: RepositorySyncUseCase.Input,
+                                service repositoryFactory: RepositoryFactory.Type) -> Observable<UseCaseState<Empty>> {
+        return input.trigger
+                .flatMapLatest {
+                    return repositoryFactory.sync(url: input.repositoryURL, username: input.username, password: input.password)
+                            .map {
+                                return UseCaseState<Empty>.succeeded(Empty())
+                            }
+                            .startWith(UseCaseState.inProgress)
+                            .catchError { error in
+                                return Observable.just(UseCaseState.failed(error))
+                            }
+                }
+                .shareReplay(1)
+                .observeOn(MainScheduler.instance)
 
     }
 }

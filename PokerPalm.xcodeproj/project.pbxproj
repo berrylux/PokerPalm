@@ -17,6 +17,7 @@
 		515F94FAFDA656FD4C494C7C /* DomainConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F929E4890821DBCABD3E2 /* DomainConvertible.swift */; };
 		515F97A57A1D001FE5970FC5 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9FEB00C708D3C5F77EE0 /* Story.swift */; };
 		515F980FFB2960D92A8535B5 /* RealmSessionConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F997E1EE6D3B592F4F15D /* RealmSessionConfiguration.swift */; };
+		515F98AF66C316FE6213E436 /* CreateOrJoinSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F992AC097597E387740AD /* CreateOrJoinSessionViewController.swift */; };
 		515F9907955AC2DB6AEC8DF0 /* RealmConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F91D10AB08B62FBA6C4D6 /* RealmConvertible.swift */; };
 		515F9A2AE9B273928912EA92 /* RealmStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92B536BE466506A6FF2F /* RealmStory.swift */; };
 		515F9AFFB45BE95BA924F09B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9B507E8A20B64D925D2D /* Session.swift */; };
@@ -114,6 +115,7 @@
 		515F93920C478518236C986B /* RealmUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		515F95D618AD331E8146A0F0 /* RealmSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmSession.swift; sourceTree = "<group>"; };
 		515F96BA01CB7688B6B1D97F /* List+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "List+Extensions.swift"; sourceTree = "<group>"; };
+		515F992AC097597E387740AD /* CreateOrJoinSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrJoinSessionViewController.swift; sourceTree = "<group>"; };
 		515F997E1EE6D3B592F4F15D /* RealmSessionConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmSessionConfiguration.swift; sourceTree = "<group>"; };
 		515F99BC0DFF1CD780B7E569 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		515F9B507E8A20B64D925D2D /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -265,6 +267,14 @@
 			path = EntityConversion;
 			sourceTree = "<group>";
 		};
+		515F94D991D7394DA2FE0BE4 /* CreateOrJoinSessionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				515F992AC097597E387740AD /* CreateOrJoinSessionViewController.swift */,
+			);
+			path = CreateOrJoinSessionScreen;
+			sourceTree = "<group>";
+		};
 		515F984506DC0950119CE4AE /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +369,7 @@
 				D237BE481DB40FA800128623 /* LaunchScreen.storyboard */,
 				D237BE4B1DB40FA800128623 /* Info.plist */,
 				886A4365C84D0C41AB4FC188 /* SplashScreen */,
+				515F94D991D7394DA2FE0BE4 /* CreateOrJoinSessionScreen */,
 			);
 			path = PokerPalm;
 			sourceTree = "<group>";
@@ -889,6 +900,7 @@
 				515F9907955AC2DB6AEC8DF0 /* RealmConvertible.swift in Sources */,
 				515F94FAFDA656FD4C494C7C /* DomainConvertible.swift in Sources */,
 				515F94530AC0D406A02570BF /* RealmRepository.swift in Sources */,
+				515F98AF66C316FE6213E436 /* CreateOrJoinSessionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
