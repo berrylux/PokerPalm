@@ -30,7 +30,10 @@
 		515F9FD370E2A29E5C059BAA /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92E8171D9888B2F6C75B /* Vote.swift */; };
 		7124C97608383221B82DC31F /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AF32E8F8DCD13BAA5E153 /* Pods_Domain.framework */; };
 		82AB1961C86D5B772C78AD9C /* Pods_PlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC002CB12EF8C42A6D74DF /* Pods_PlatformTests.framework */; };
+		886A43C69EBA55D44DCC5651 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A4D7005F108FD335B01F3 /* SessionViewController.swift */; };
+		886A4A597628F65C1F074FB5 /* SessionChangesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A40FE7996C6D8298466B8 /* SessionChangesUseCase.swift */; };
 		886A4BFB1FAA3A0923267908 /* RepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A43767C77480CE7F2E159 /* RepositoryFactory.swift */; };
+		886A4CA8CBDBDEFE2387C80B /* SessionElapsedTimeChangedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A42C8EDAF052FB96F1872 /* SessionElapsedTimeChangedUseCase.swift */; };
 		886A4D7B93167EFB34F39ED4 /* RepositorySyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A49304F19753D46B999CB /* RepositorySyncUseCase.swift */; };
 		886A4FF3B0D2B46A11152D98 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A41E46C8BD4F1FD161376 /* SplashViewController.swift */; };
 		A425EFF21163E8653059E81D /* Pods_PokerPalm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774B384527D6FDA991C10B79 /* Pods_PokerPalm.framework */; };
@@ -129,10 +132,13 @@
 		5D28C09F1AE1FB34328B34C5 /* Pods-DomainTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests.release.xcconfig"; sourceTree = "<group>"; };
 		774B384527D6FDA991C10B79 /* Pods_PokerPalm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerPalm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C07576B639E64EA6EF98B74 /* Pods-Platform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Platform/Pods-Platform.debug.xcconfig"; sourceTree = "<group>"; };
+		886A40FE7996C6D8298466B8 /* SessionChangesUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionChangesUseCase.swift; sourceTree = "<group>"; };
 		886A41E46C8BD4F1FD161376 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		886A42C8EDAF052FB96F1872 /* SessionElapsedTimeChangedUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionElapsedTimeChangedUseCase.swift; sourceTree = "<group>"; };
 		886A43767C77480CE7F2E159 /* RepositoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
 		886A478498C9DB264B3CA561 /* Repositories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		886A49304F19753D46B999CB /* RepositorySyncUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySyncUseCase.swift; sourceTree = "<group>"; };
+		886A4D7005F108FD335B01F3 /* SessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		9031B51C7FEDDC13F7513357 /* Pods-PlatformTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlatformTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlatformTests/Pods-PlatformTests.release.xcconfig"; sourceTree = "<group>"; };
 		989BC68AB4FAA6622A885F2A /* Pods-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.release.xcconfig"; path = "Pods/Target Support Files/Pods-Domain/Pods-Domain.release.xcconfig"; sourceTree = "<group>"; };
 		B775A4A999B84D39D3687472 /* Pods-PlatformTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlatformTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlatformTests/Pods-PlatformTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -299,6 +305,14 @@
 			path = SplashScreen;
 			sourceTree = "<group>";
 		};
+		886A4416017F971309DA7FB8 /* SessionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				886A4D7005F108FD335B01F3 /* SessionViewController.swift */,
+			);
+			path = SessionScreen;
+			sourceTree = "<group>";
+		};
 		886A4D6D7E82E3BC0626B0F0 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +320,8 @@
 				515F991E846F55CDA7035EA2 /* UseCase.swift */,
 				515F9359EE7320E584AFA922 /* UseCaseState.swift */,
 				515F98D4095B2ECA5446435A /* CreateSessionUseCase.swift */,
+				886A40FE7996C6D8298466B8 /* SessionChangesUseCase.swift */,
+				886A42C8EDAF052FB96F1872 /* SessionElapsedTimeChangedUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -377,6 +393,7 @@
 				D237BE4B1DB40FA800128623 /* Info.plist */,
 				886A4365C84D0C41AB4FC188 /* SplashScreen */,
 				515F94D991D7394DA2FE0BE4 /* CreateOrJoinSessionScreen */,
+				886A4416017F971309DA7FB8 /* SessionScreen */,
 			);
 			path = PokerPalm;
 			sourceTree = "<group>";
@@ -871,6 +888,7 @@
 				D237BE401DB40FA800128623 /* AppDelegate.swift in Sources */,
 				254E0FFE1DCE564C0025CD4C /* CreateOrJoinSessionViewController.swift in Sources */,
 				886A4FF3B0D2B46A11152D98 /* SplashViewController.swift in Sources */,
+				886A43C69EBA55D44DCC5651 /* SessionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,6 +910,8 @@
 				886A4D7B93167EFB34F39ED4 /* RepositorySyncUseCase.swift in Sources */,
 				886A4BFB1FAA3A0923267908 /* RepositoryFactory.swift in Sources */,
 				515F9A4438C068C74DD362C1 /* CreateSessionUseCase.swift in Sources */,
+				886A4A597628F65C1F074FB5 /* SessionChangesUseCase.swift in Sources */,
+				886A4CA8CBDBDEFE2387C80B /* SessionElapsedTimeChangedUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

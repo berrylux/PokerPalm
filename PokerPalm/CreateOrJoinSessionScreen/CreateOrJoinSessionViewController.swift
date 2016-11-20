@@ -11,24 +11,32 @@ class DummyTokenGenerator: TokenGenerator {
 }
 
 final class CreateOrJoinSessionViewController: UIViewController {
-    let disposeBag = DisposeBag()
+
 
     @IBOutlet weak var createSessionButton: UIButton!
     @IBOutlet weak var joinSessionButton: UIButton!
     @IBOutlet weak var tokenTextField: UITextField!
     @IBOutlet weak var playerObserverSwitch: UISwitch!
 
+    let disposeBag = DisposeBag()
+    var user: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let input = CreateSessionUseCase.Input(user: User(ID: UUID(),
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        user = User(ID: UUID(),
                 role: .player,
-                name: "Some Name"),
-                trigger: createSessionButton.rx.tap.asObservable())
+                name: "Some Name") // TODO extract to CreateUserUseCase
+        let input = CreateSessionUseCase.Input(user: user, trigger: createSessionButton.rx.tap.asObservable())
         let services = CreateSessionUseCase.Services(sessionIDGenerator: DummyTokenGenerator(),
                 repository: Repositories.sessionRepository)
 
         CreateSessionUseCase.assemble(input: input, service: services)
+                .takeUntil(rx.sentMessage(#selector(viewWillDisappear))) // TODO check when session changed binding is disposed
                 .bindTo(rx.state)
                 .addDisposableTo(disposeBag)
     }
@@ -37,7 +45,13 @@ final class CreateOrJoinSessionViewController: UIViewController {
 fileprivate extension Reactive where Base: CreateOrJoinSessionViewController {
     var state: UIBindingObserver<Base, UseCaseState<Session>> {
         return UIBindingObserver(UIElement: base) { controller, state in
-            print(state)
+            switch state {
+                case .succeeded(let session):
+                    let sessionController = SessionViewController.controller(session: session, currentUser: controller.user)
+                    let navigationController = UINavigationController(rootViewController: sessionController)
+                    controller.present(navigationController, animated: true, completion: nil)
+                default: break
+            }
         }
     }
 }

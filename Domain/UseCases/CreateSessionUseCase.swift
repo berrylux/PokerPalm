@@ -3,10 +3,10 @@ import RxSwift
 
 public class CreateSessionUseCase: UseCase {
     public struct Services {
-        let sessionIDGenerator: TokenGenerator
+        let sessionTokenGenerator: TokenGenerator
         let repository: AbstractRepository<Session>
         public init(sessionIDGenerator: TokenGenerator, repository: AbstractRepository<Session>) {
-            self.sessionIDGenerator = sessionIDGenerator
+            self.sessionTokenGenerator = sessionIDGenerator
             self.repository = repository
         }
     }
@@ -53,15 +53,15 @@ public class CreateSessionUseCase: UseCase {
     }
 
     private static func tryToMakeSession(user: User, services: Services)  -> Observable<Session> {
-        return Observable.just(services.sessionIDGenerator.generate())
+        return Observable.just(services.sessionTokenGenerator.generate())
             .flatMapLatest(findSession(with: services))
             .flatMapLatest(makeSessionUnlessFound(with: services, for: user))
     }
 
-    private  static func findSession(with services: Services) -> (String) -> Observable<(String, Session?)> {
-        return { name in
-            let justName = Observable.just(name)
-            let session = services.repository.queryFirst(with: Session.ID == name)
+    private  static func findSession(with services: Services) -> ((String) -> Observable<(String, Session?)>) {
+        return { token in
+            let justName = Observable.just(token)
+            let session = services.repository.queryFirst(with: Session.token == token)
 
             return Observable.zip(justName, session) { (name, session) in
                 return (name, session)

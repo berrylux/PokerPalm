@@ -6,7 +6,7 @@ public struct Empty: Equatable {
     }
 }
 
-public enum UseCaseState<T: Equatable>: Equatable{
+public enum UseCaseState<T: Equatable>: Equatable {
     case inProgress
     case succeeded(T)
     case failed(Error)

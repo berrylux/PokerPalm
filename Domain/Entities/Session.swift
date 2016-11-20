@@ -55,6 +55,7 @@ public struct Session: Identifiable {
 
 public extension Session {
     static var ID:Attribute<String> { return "ID" }
+    static var token:Attribute<String> { return "token" }
     static var name:Attribute<String> { return "name" }
     static var configuration:Attribute<String> { return "configuration" }
     static var stories:Attribute<String> { return "stories" }
