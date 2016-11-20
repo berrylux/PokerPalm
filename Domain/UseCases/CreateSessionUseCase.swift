@@ -95,12 +95,6 @@ public class CreateSessionUseCase: UseCase {
         }
 }
 
-
-
-class JoinSessionUseCase {
-
-}
-
 class VoteUseCase {
 
 }

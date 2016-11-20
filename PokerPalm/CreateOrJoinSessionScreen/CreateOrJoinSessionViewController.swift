@@ -23,22 +23,28 @@ final class CreateOrJoinSessionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        user = User(ID: UUID(),
+                role: .player,
+                name: "Some Name") // TODO extract to CreateUserUseCase
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        user = User(ID: UUID(),
-                role: .player,
-                name: "Some Name") // TODO extract to CreateUserUseCase
+
         let input = CreateSessionUseCase.Input(user: user, trigger: createSessionButton.rx.tap.asObservable())
         let services = CreateSessionUseCase.Services(sessionIDGenerator: DummyTokenGenerator(),
                 repository: Repositories.sessionRepository)
-
         CreateSessionUseCase.assemble(input: input, service: services)
-                .takeUntil(rx.sentMessage(#selector(viewWillDisappear))) // TODO check when session changed binding is disposed
-                .bindTo(rx.state)
-                .addDisposableTo(disposeBag)
+            .takeUntil(rx.sentMessage(#selector(viewWillDisappear))) // TODO check when session changed binding is disposed
+            .bindTo(rx.state)
+            .addDisposableTo(disposeBag)
+
+        let joinSessionTrigger = joinSessionButton.rx.tap.asObservable().withLatestFrom(tokenTextField.rx.text.map { $0 ?? "" })
+        let joinSessionInput = JoinSessionUseCase.Input(sessionTokenTrigger: joinSessionTrigger, user: user)
+        JoinSessionUseCase.assemble(input: joinSessionInput, service: Repositories.sessionRepository)
+            .takeUntil(rx.sentMessage(#selector(viewWillDisappear))) // TODO check when session changed binding is disposed
+            .bindTo(rx.state)
+            .addDisposableTo(disposeBag)
     }
 }
 
