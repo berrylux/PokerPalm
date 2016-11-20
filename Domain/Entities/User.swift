@@ -17,6 +17,11 @@ public struct User: Identifiable {
     }
 }
 
+
+public extension User {
+    static var ID:Attribute<String> { return "ID" }
+}
+
 extension User: Equatable {
     public static func == (lhs: User, rhs: User) -> Bool {
         return lhs.ID == rhs.ID &&

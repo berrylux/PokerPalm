@@ -14,6 +14,10 @@ final class RealmUser: Object, DomainConvertible {
             role: role,
             name: self.name)
     }
+
+    override class func primaryKey() -> String? {
+        return User.ID.key
+    }
 }
 
 extension User: RealmConvertible {

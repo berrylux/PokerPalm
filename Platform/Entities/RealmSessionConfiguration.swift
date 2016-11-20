@@ -22,6 +22,10 @@ class RealmSessionConfiguration: Object, DomainConvertible {
                 isObserverAllowedToReset: isObserverAllowedToReset,
                 isObserverAllowedToAmendSession: isObserverAllowedToAmendSession)
     }
+
+    override class func primaryKey() -> String? {
+        return Session.Configuration.ID.key
+    }
 }
 
 extension Session.Configuration: RealmConvertible {

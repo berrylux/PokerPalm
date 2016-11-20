@@ -124,7 +124,7 @@
             </objects>
             <point key="canvasLocation" x="786" y="95"/>
         </scene>
-        <!--Blueberry-->
+        <!--Session Name-->
         <scene sceneID="nBj-s6-mrI">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tda-iU-lJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,14 +140,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dA6-pz-jew">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNX-lg-pmq">
-                                        <rect key="frame" x="147.5" y="0.0" width="25" height="2.5"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Story description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNX-lg-pmq">
+                                        <rect key="frame" x="10" y="0.0" width="300" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4X8-Se-N2d">
-                                        <rect key="frame" x="0.0" y="2.5" width="320" height="391"/>
+                                        <rect key="frame" x="0.0" y="30" width="320" height="391"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="userCell" textLabel="0M1-RY-rpD" detailTextLabel="YNm-vV-6Ul" style="IBUITableViewCellStyleValue1" id="CVS-xh-FDC">
@@ -177,7 +177,7 @@
                                         </prototypes>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="K4S-bj-IiB">
-                                        <rect key="frame" x="10" y="393.5" width="300" height="72.5"/>
+                                        <rect key="frame" x="10" y="421" width="300" height="72.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ali-dh-FLW">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="72.5"/>
@@ -221,15 +221,15 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MS1-P6-uf0">
-                                        <rect key="frame" x="40.5" y="466" width="239" height="38"/>
+                                        <rect key="frame" x="40.5" y="493.5" width="239" height="10.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZo-lI-vYa">
-                                                <rect key="frame" x="0.0" y="0.0" width="108" height="38"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="10.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Clear Votes"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0g7-rf-Nkq">
-                                                <rect key="frame" x="128" y="0.0" width="111" height="38"/>
+                                                <rect key="frame" x="128" y="0.0" width="111" height="10.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Show Votes"/>
                                             </button>
@@ -237,8 +237,10 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="GNX-lg-pmq" firstAttribute="leading" secondItem="dA6-pz-jew" secondAttribute="leading" constant="10" id="8V3-ak-VIN"/>
                                     <constraint firstAttribute="trailing" secondItem="K4S-bj-IiB" secondAttribute="trailing" constant="10" id="UvH-7g-1kQ"/>
                                     <constraint firstItem="K4S-bj-IiB" firstAttribute="leading" secondItem="dA6-pz-jew" secondAttribute="leading" constant="10" id="laH-se-WuY"/>
+                                    <constraint firstAttribute="trailing" secondItem="GNX-lg-pmq" secondAttribute="trailing" constant="10" id="zXq-IX-AdZ"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -250,7 +252,7 @@
                             <constraint firstItem="jIN-KA-zSY" firstAttribute="top" secondItem="dA6-pz-jew" secondAttribute="bottom" id="snA-Js-d39"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Blueberry" id="cJN-pn-D6x">
+                    <navigationItem key="navigationItem" title="Session Name" id="cJN-pn-D6x">
                         <barButtonItem key="leftBarButtonItem" title="03:05" style="plain" id="Q2T-VP-KlB"/>
                         <barButtonItem key="rightBarButtonItem" title="Invite" id="yGn-5l-rpz"/>
                     </navigationItem>
@@ -264,6 +266,7 @@
                         <outlet property="clearVotesButton" destination="SZo-lI-vYa" id="gw8-qh-ya1"/>
                         <outlet property="inviteButton" destination="yGn-5l-rpz" id="iGD-5D-cYy"/>
                         <outlet property="showVotesButton" destination="0g7-rf-Nkq" id="Bfy-1f-xIs"/>
+                        <outlet property="storyDescriptionTextField" destination="GNX-lg-pmq" id="u7r-RJ-Twl"/>
                         <outlet property="tableView" destination="4X8-Se-N2d" id="2xu-bS-gQR"/>
                         <outlet property="timerButton" destination="Q2T-VP-KlB" id="4wD-Im-KD9"/>
                     </connections>

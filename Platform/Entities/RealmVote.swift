@@ -14,6 +14,10 @@ final class RealmVote: Object, DomainConvertible {
     func asDomain() -> Vote {
         return Vote(ID: UUID(uuidString: ID)!, user: user.asDomain())
     }
+
+    override class func primaryKey() -> String? {
+        return Vote.ID.key
+    }
 }
 
 extension Vote: RealmConvertible {

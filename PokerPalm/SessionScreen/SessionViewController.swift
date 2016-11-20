@@ -8,6 +8,7 @@ import RxCocoa
 final class SessionViewController: UIViewController {
     @IBOutlet var timerButton: UIBarButtonItem!
     @IBOutlet var inviteButton: UIBarButtonItem!
+    @IBOutlet var storyDescriptionTextField: UITextField!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var card1: UIButton!
     @IBOutlet var card2: UIButton!
@@ -29,10 +30,14 @@ final class SessionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let observableSession = SessionChangesUseCase.assemble(input: self.session, service: Repositories.sessionRepository)
+        let observableSession = SessionChangesUseCase.assemble(input: session, service: Repositories.sessionRepository)
         observableSession.bindTo(rx.state)
         SessionElapsedTimeChangedUseCase.assemble(input: observableSession, service: Void()).bindTo(rx.timerBinding)
-
+        let descriptionTrigger = storyDescriptionTextField.rx.text.map {
+            $0 ?? ""
+        }
+        let input = ChangeStoryDescriptionUseCase.Input(descriptionTrigger: descriptionTrigger, session: session)
+        ChangeStoryDescriptionUseCase.assemble(input: input, service: Repositories.sessionRepository).debug().subscribe()
     }
 }
 
@@ -40,6 +45,7 @@ fileprivate extension Reactive where Base: SessionViewController {
     var state: UIBindingObserver<Base, Session> {
         return UIBindingObserver(UIElement: base) { controller, session in
             controller.title = session.name
+            controller.storyDescriptionTextField.text = session.stories.last!.storyDescription
         }
     }
 }

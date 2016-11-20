@@ -7,12 +7,22 @@
 		<key>Domain.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>1</integer>
+		</dict>
+		<key>DomainTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Platform.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>2</integer>
+		</dict>
+		<key>PlatformTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>PokerPalm.xcscheme</key>
 		<dict>
@@ -22,20 +32,30 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>2512A9571DBAAA21002E1104</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
 		<key>D237BE3B1DB40FA800128623</key>
 		<dict>
 			<key>primary</key>
-			<true/>
+			<true />
 		</dict>
 		<key>D237BE551DB4117E00128623</key>
 		<dict>
 			<key>primary</key>
-			<true/>
+			<true />
 		</dict>
 		<key>D237BE671DB4118700128623</key>
 		<dict>
 			<key>primary</key>
-			<true/>
+			<true />
+		</dict>
+		<key>D2CA0D351DC626C80046AB66</key>
+		<dict>
+			<key>primary</key>
+			<true />
 		</dict>
 	</dict>
 </dict>

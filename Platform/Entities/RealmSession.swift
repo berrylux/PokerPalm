@@ -9,6 +9,10 @@ final class RealmSession: Object {
     dynamic var configuration: RealmSessionConfiguration! = nil
     
     let stories: List<RealmStory> = List()
+
+    override class func primaryKey() -> String? {
+        return Session.ID.key
+    }
 }
 
 extension RealmSession: DomainConvertible {

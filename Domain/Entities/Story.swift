@@ -23,6 +23,10 @@ public struct Story: Identifiable {
     }
 }
 
+public extension Story {
+    static var ID:Attribute<String> { return "ID" }
+}
+
 extension Story: Equatable {
     public static func == (lhs: Story, rhs: Story) -> Bool {
         return lhs.ID == rhs.ID &&

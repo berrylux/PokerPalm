@@ -10,6 +10,11 @@ public struct Vote: Identifiable {
     }
 }
 
+
+public extension Vote {
+    static var ID:Attribute<String> { return "ID" }
+}
+
 extension Vote: Equatable {
     public static func == (lhs: Vote, rhs: Vote) -> Bool {
         return lhs.ID == rhs.ID &&

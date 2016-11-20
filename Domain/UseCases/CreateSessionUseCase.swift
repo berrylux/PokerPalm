@@ -101,10 +101,6 @@ class JoinSessionUseCase {
 
 }
 
-class ChangeStoryDescriptionUseCase {
-
-}
-
 class VoteUseCase {
 
 }

@@ -30,6 +30,10 @@ extension RealmStory: DomainConvertible {
                 users: users,
                 votes: votes)
     }
+
+    override class func primaryKey() -> String? {
+        return Story.ID.key
+    }
 }
 
 extension Story: RealmConvertible {

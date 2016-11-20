@@ -61,6 +61,10 @@ public extension Session {
     static var stories:Attribute<String> { return "stories" }
 }
 
+public extension Session.Configuration {
+    static var ID:Attribute<String> { return "ID" }
+}
+
 extension Session: Equatable {
     public static func == (lhs: Session, rhs: Session) -> Bool {
         return lhs.ID == rhs.ID &&

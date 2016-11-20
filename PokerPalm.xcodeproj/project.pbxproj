@@ -31,6 +31,7 @@
 		7124C97608383221B82DC31F /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AF32E8F8DCD13BAA5E153 /* Pods_Domain.framework */; };
 		82AB1961C86D5B772C78AD9C /* Pods_PlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC002CB12EF8C42A6D74DF /* Pods_PlatformTests.framework */; };
 		886A43C69EBA55D44DCC5651 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A4D7005F108FD335B01F3 /* SessionViewController.swift */; };
+		886A4A0E8C4D347AFFF0685B /* ChangeStoryDescriptionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A4752CEAF936B8D165803 /* ChangeStoryDescriptionUseCase.swift */; };
 		886A4A597628F65C1F074FB5 /* SessionChangesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A40FE7996C6D8298466B8 /* SessionChangesUseCase.swift */; };
 		886A4BFB1FAA3A0923267908 /* RepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A43767C77480CE7F2E159 /* RepositoryFactory.swift */; };
 		886A4CA8CBDBDEFE2387C80B /* SessionElapsedTimeChangedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A42C8EDAF052FB96F1872 /* SessionElapsedTimeChangedUseCase.swift */; };
@@ -136,6 +137,7 @@
 		886A41E46C8BD4F1FD161376 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		886A42C8EDAF052FB96F1872 /* SessionElapsedTimeChangedUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionElapsedTimeChangedUseCase.swift; sourceTree = "<group>"; };
 		886A43767C77480CE7F2E159 /* RepositoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
+		886A4752CEAF936B8D165803 /* ChangeStoryDescriptionUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeStoryDescriptionUseCase.swift; sourceTree = "<group>"; };
 		886A478498C9DB264B3CA561 /* Repositories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		886A49304F19753D46B999CB /* RepositorySyncUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySyncUseCase.swift; sourceTree = "<group>"; };
 		886A4D7005F108FD335B01F3 /* SessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				515F98D4095B2ECA5446435A /* CreateSessionUseCase.swift */,
 				886A40FE7996C6D8298466B8 /* SessionChangesUseCase.swift */,
 				886A42C8EDAF052FB96F1872 /* SessionElapsedTimeChangedUseCase.swift */,
+				886A4752CEAF936B8D165803 /* ChangeStoryDescriptionUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 				515F9A4438C068C74DD362C1 /* CreateSessionUseCase.swift in Sources */,
 				886A4A597628F65C1F074FB5 /* SessionChangesUseCase.swift in Sources */,
 				886A4CA8CBDBDEFE2387C80B /* SessionElapsedTimeChangedUseCase.swift in Sources */,
+				886A4A0E8C4D347AFFF0685B /* ChangeStoryDescriptionUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

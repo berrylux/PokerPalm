@@ -33,7 +33,7 @@ class RealmRepository<T: RealmConvertible & Identifiable>: AbstractRepository<T>
         let realm = try! Realm(configuration: configuration)
         let realmObject = object.asRealm()
         try! realm.write {
-            realm.add(realmObject)
+            realm.add(realmObject, update: true)
         }
         let object = realm.objects(T.RealmType.self).filter("ID == '\(object.ID.uuidString)'")
         return Observable.arrayFrom(object)
