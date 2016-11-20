@@ -4,8 +4,8 @@ import RxSwift
 public class ChangeStoryDescriptionUseCase: UseCase {
     public struct Input {
         let descriptionTrigger: Observable<String>
-        let session: Session
-        public init(descriptionTrigger: Observable<String>, session: Session) {
+        let session: Observable<Session>
+        public init(descriptionTrigger: Observable<String>, session: Observable<Session>) {
             self.descriptionTrigger = descriptionTrigger
             self.session = session
         }
@@ -19,9 +19,12 @@ public class ChangeStoryDescriptionUseCase: UseCase {
 
     public static func assemble(input: Input,
                                 service repository: AbstractRepository<Session>) -> Observable<Session> {
-        return input.descriptionTrigger.throttle(0.5, scheduler: MainScheduler.instance)
-            .flatMapLatest { string -> Observable<Session> in
-                var session = input.session
+        let source = input.descriptionTrigger.throttle(0.5, scheduler: MainScheduler.instance)
+        return Observable.zip(source, source.withLatestFrom(input.session)) { (string, session) -> (String, Session) in
+                    return (string, session)
+            }
+            .flatMapLatest { string, session -> Observable<Session> in
+                var session = session
                 var currentStory = session.stories.popLast()!
                 currentStory.storyDescription = string
                 session.stories.append(currentStory)
