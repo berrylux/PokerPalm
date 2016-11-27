@@ -56,7 +56,17 @@ fileprivate extension Reactive where Base: CreateOrJoinSessionViewController {
                     let sessionController = SessionViewController.controller(session: session, currentUser: controller.user)
                     let navigationController = UINavigationController(rootViewController: sessionController)
                     controller.present(navigationController, animated: true, completion: nil)
-                default: break
+            case .failed(let error):
+                let alert = UIAlertController(title: "Error",
+                                              message: "Failed \(error)",
+                    preferredStyle: .alert)
+                let action = UIAlertAction(title: "Dismiss",
+                                           style: .cancel,
+                                           handler: nil)
+                alert.addAction(action)
+                controller.present(alert, animated: true)
+            default:
+                break
             }
         }
     }
