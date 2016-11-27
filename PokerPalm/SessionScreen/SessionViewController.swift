@@ -32,19 +32,28 @@ final class SessionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let observableSession = SessionChangesUseCase.assemble(input: session, service: Repositories.sessionRepository)
-        observableSession.bindTo(rx.state)
+        observableSession
+                .bindTo(rx.state)
+        
         observableSession.map { session in
             return session.stories.last!.users
-        }.debug().bindTo(tableView.rx.items(cellIdentifier: "userCell", cellType: UITableViewCell.self)) { (row, user, cell) in
+        }.bindTo(tableView.rx.items(cellIdentifier: "userCell", cellType: UITableViewCell.self)) { (row, user, cell) in
             cell.textLabel?.text = user.name
         }.addDisposableTo(disposeBag)
 
         SessionElapsedTimeChangedUseCase.assemble(input: observableSession, service: Void()).bindTo(rx.timerBinding)
-        let descriptionTrigger = storyDescriptionTextField.rx.text.map {
-            $0 ?? ""
-        }
-        let input = ChangeStoryDescriptionUseCase.Input(descriptionTrigger: descriptionTrigger, session: observableSession)
-        ChangeStoryDescriptionUseCase.assemble(input: input, service: Repositories.sessionRepository).debug().subscribe()
+        
+        let descriptionTrigger = storyDescriptionTextField.rx.text
+            .map {
+                $0 ?? ""
+            }
+            .skip(1) //Control produces event on subscribtion which we dont need
+        
+        let input = Observable.zip(descriptionTrigger,
+                                   descriptionTrigger.withLatestFrom(observableSession)) { (string, session) -> (String, Session) in
+            return (string, session)
+        }.throttle(0.5, scheduler: MainScheduler.instance)
+        ChangeStoryDescriptionUseCase.assemble(input: input, service: Repositories.sessionRepository).subscribe()
     }
 }
 
