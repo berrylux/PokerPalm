@@ -54,6 +54,9 @@ fileprivate extension Reactive where Base: CreateOrJoinSessionViewController {
             switch state {
                 case .succeeded(let session):
                     let sessionController = SessionViewController.controller(session: session, currentUser: controller.user)
+                    sessionController.didFinish = { [weak controller] in
+                        controller?.dismiss(animated: true, completion: nil)
+                    }
                     let navigationController = UINavigationController(rootViewController: sessionController)
                     controller.present(navigationController, animated: true, completion: nil)
             case .failed(let error):

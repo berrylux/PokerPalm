@@ -6,8 +6,10 @@ import RxSwift
 import RxCocoa
 
 final class SessionViewController: UIViewController {
-    @IBOutlet var timerButton: UIBarButtonItem!
+    public var didFinish: (() -> Void)?
+    @IBOutlet var exitButton: UIBarButtonItem!
     @IBOutlet var inviteButton: UIBarButtonItem!
+    @IBOutlet var timerLabel: UILabel!
     @IBOutlet var storyDescriptionTextField: UITextField!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var card1: UIButton!
@@ -31,7 +33,7 @@ final class SessionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let observableSession = SessionChangesUseCase.assemble(input: session, service: Repositories.sessionRepository)
+        let observableSession = SessionChangesUseCase.assemble(input: session, service: Repositories.sessionRepository).shareReplay(1)
         observableSession
                 .bindTo(rx.state)
         
@@ -54,6 +56,10 @@ final class SessionViewController: UIViewController {
             return (string, session)
         }.throttle(0.5, scheduler: MainScheduler.instance)
         ChangeStoryDescriptionUseCase.assemble(input: input, service: Repositories.sessionRepository).subscribe()
+
+        exitButton.rx.tap.subscribe(onNext:{ [weak self] in
+            self?.didFinish?()
+        })
     }
 }
 
@@ -72,7 +78,7 @@ fileprivate extension Reactive where Base: SessionViewController {
         return UIBindingObserver(UIElement: base) { controller, timeElapsed in
             let seconds = timeElapsed.truncatingRemainder(dividingBy: 60)
             let totalMinutes = (timeElapsed / 60)
-            controller.timerButton.title = String(format: "%02.f:%02.f", totalMinutes, seconds)
+            controller.timerLabel.text = String(format: "%02.f:%02.f", totalMinutes, seconds)
         }
     }
 }
