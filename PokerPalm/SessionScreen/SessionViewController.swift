@@ -41,7 +41,7 @@ final class SessionViewController: UIViewController {
             cell.textLabel?.text = user.name
         }.addDisposableTo(disposeBag)
 
-        SessionElapsedTimeChangedUseCase.assemble(input: observableSession, service: Void()).bindTo(rx.timerBinding)
+        SessionElapsedTimeChangedUseCase.assemble(input: observableSession.startWith(session), service: Void()).bindTo(rx.timerBinding)
         
         let descriptionTrigger = storyDescriptionTextField.rx.text
             .map {
