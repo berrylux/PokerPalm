@@ -31,6 +31,7 @@
 		7124C97608383221B82DC31F /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0AF32E8F8DCD13BAA5E153 /* Pods_Domain.framework */; };
 		82AB1961C86D5B772C78AD9C /* Pods_PlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC002CB12EF8C42A6D74DF /* Pods_PlatformTests.framework */; };
 		886A41CA1536FAD4A563CB15 /* JoinSessionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A4E1F2A0DAA3C1168F7D8 /* JoinSessionUseCase.swift */; };
+		886A420581FB9708EEDE9449 /* Biome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A4B0C903788C464CCDBC7 /* Biome.swift */; };
 		886A43C69EBA55D44DCC5651 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A4D7005F108FD335B01F3 /* SessionViewController.swift */; };
 		886A4A0E8C4D347AFFF0685B /* ChangeStoryDescriptionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A4752CEAF936B8D165803 /* ChangeStoryDescriptionUseCase.swift */; };
 		886A4A597628F65C1F074FB5 /* SessionChangesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A40FE7996C6D8298466B8 /* SessionChangesUseCase.swift */; };
@@ -40,6 +41,7 @@
 		886A4FF3B0D2B46A11152D98 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A41E46C8BD4F1FD161376 /* SplashViewController.swift */; };
 		A425EFF21163E8653059E81D /* Pods_PokerPalm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774B384527D6FDA991C10B79 /* Pods_PokerPalm.framework */; };
 		AE56848936F398686028A9CC /* Pods_Platform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CAEF90DE1DEB6101571D96F /* Pods_Platform.framework */; };
+		D22EA4111DEB6C6500A4C12E /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22EA4101DEB6C6500A4C12E /* GetCurrentUserUseCase.swift */; };
 		D23761D61DC6743900872F94 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A478498C9DB264B3CA561 /* Repositories.swift */; };
 		D237BE401DB40FA800128623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237BE3F1DB40FA800128623 /* AppDelegate.swift */; };
 		D237BE421DB40FA800128623 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237BE411DB40FA800128623 /* ViewController.swift */; };
@@ -141,6 +143,7 @@
 		886A4752CEAF936B8D165803 /* ChangeStoryDescriptionUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeStoryDescriptionUseCase.swift; sourceTree = "<group>"; };
 		886A478498C9DB264B3CA561 /* Repositories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		886A49304F19753D46B999CB /* RepositorySyncUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySyncUseCase.swift; sourceTree = "<group>"; };
+		886A4B0C903788C464CCDBC7 /* Biome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Biome.swift; sourceTree = "<group>"; };
 		886A4D7005F108FD335B01F3 /* SessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		886A4E1F2A0DAA3C1168F7D8 /* JoinSessionUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinSessionUseCase.swift; sourceTree = "<group>"; };
 		9031B51C7FEDDC13F7513357 /* Pods-PlatformTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlatformTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlatformTests/Pods-PlatformTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +151,7 @@
 		B775A4A999B84D39D3687472 /* Pods-PlatformTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlatformTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlatformTests/Pods-PlatformTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C63262C538D271BBA7981169 /* Pods-Platform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Platform.release.xcconfig"; path = "Pods/Target Support Files/Pods-Platform/Pods-Platform.release.xcconfig"; sourceTree = "<group>"; };
 		CF92B5CA796B52821036C7C3 /* Pods_DomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D22EA4101DEB6C6500A4C12E /* GetCurrentUserUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCurrentUserUseCase.swift; sourceTree = "<group>"; };
 		D23761D71DC67D7300872F94 /* PokerPalm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PokerPalm.entitlements; sourceTree = "<group>"; };
 		D237BE3C1DB40FA800128623 /* PokerPalm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerPalm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237BE3F1DB40FA800128623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 				515F92E8171D9888B2F6C75B /* Vote.swift */,
 				515F99BC0DFF1CD780B7E569 /* User.swift */,
 				886A43767C77480CE7F2E159 /* RepositoryFactory.swift */,
+				886A4B0C903788C464CCDBC7 /* Biome.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				886A49304F19753D46B999CB /* RepositorySyncUseCase.swift */,
+				D22EA4101DEB6C6500A4C12E /* GetCurrentUserUseCase.swift */,
 				515F991E846F55CDA7035EA2 /* UseCase.swift */,
 				515F9359EE7320E584AFA922 /* UseCaseState.swift */,
 				515F98D4095B2ECA5446435A /* CreateSessionUseCase.swift */,
@@ -920,6 +926,8 @@
 				886A4CA8CBDBDEFE2387C80B /* SessionElapsedTimeChangedUseCase.swift in Sources */,
 				886A4A0E8C4D347AFFF0685B /* ChangeStoryDescriptionUseCase.swift in Sources */,
 				886A41CA1536FAD4A563CB15 /* JoinSessionUseCase.swift in Sources */,
+				D22EA4111DEB6C6500A4C12E /* GetCurrentUserUseCase.swift in Sources */,
+				886A420581FB9708EEDE9449 /* Biome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

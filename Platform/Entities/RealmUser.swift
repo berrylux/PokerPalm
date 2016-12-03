@@ -5,7 +5,7 @@ import RealmSwift
 final class RealmUser: Object, DomainConvertible {
     dynamic var ID: String = ""
     dynamic var role: Int = 0
-    dynamic var name: String = ""
+    dynamic var name: String? = nil
     
     func asDomain() -> User {
         let role = User.Role.init(rawValue: self.role)!

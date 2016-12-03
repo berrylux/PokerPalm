@@ -21,10 +21,10 @@ final class SessionViewController: UIViewController {
     @IBOutlet var showVotesButton: UIButton!
 
     fileprivate var session: Session!
-    private var currentUser: User!
+    private var currentUser: Observable<User>!
     let disposeBag = DisposeBag()
 
-    class func controller(session: Session, currentUser: User) -> SessionViewController {
+    class func controller(session: Session, currentUser: Observable<User>) -> SessionViewController {
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SessionViewController") as! SessionViewController
         controller.session = session
         controller.currentUser = currentUser
@@ -34,13 +34,14 @@ final class SessionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let observableSession = SessionChangesUseCase.assemble(input: session, service: Repositories.sessionRepository).shareReplay(1)
+
         observableSession
                 .bindTo(rx.state)
         
         observableSession.map { session in
             return session.stories.last!.users
-        }.bindTo(tableView.rx.items(cellIdentifier: "userCell", cellType: UITableViewCell.self)) { (row, user, cell) in
-            cell.textLabel?.text = user.name
+        }.bindTo(tableView.rx.items(cellIdentifier: "userCell", cellType: UITableViewCell.self)) { [unowned self] (row, user, cell) in
+            cell.textLabel?.text = user.username(for: self.session)
         }.addDisposableTo(disposeBag)
 
         SessionElapsedTimeChangedUseCase.assemble(input: observableSession, service: Void()).bindTo(rx.timerBinding)

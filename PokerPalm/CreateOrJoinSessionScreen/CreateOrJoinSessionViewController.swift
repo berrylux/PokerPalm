@@ -19,19 +19,20 @@ final class CreateOrJoinSessionViewController: UIViewController {
     @IBOutlet weak var playerObserverSwitch: UISwitch!
 
     let disposeBag = DisposeBag()
-    var user: User!
+
+    let observableUser: Observable<User> = {
+        let services = (UserDefaults.standard, Repositories.userRepository)
+        return GetCurrentUserUseCase.assemble(input: Observable.just(), services: services).shareReplay(1)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        user = User(ID: UUID(),
-                role: .player,
-                name: "Some Name") // TODO extract to CreateUserUseCase
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        let input = CreateSessionUseCase.Input(user: user, trigger: createSessionButton.rx.tap.asObservable())
+        let input = createSessionButton.rx.tap.asObservable().withLatestFrom(self.observableUser)
         let services = CreateSessionUseCase.Services(sessionIDGenerator: DummyTokenGenerator(),
                 repository: Repositories.sessionRepository)
         CreateSessionUseCase.assemble(input: input, service: services)
@@ -40,7 +41,11 @@ final class CreateOrJoinSessionViewController: UIViewController {
             .addDisposableTo(disposeBag)
 
         let joinSessionTrigger = joinSessionButton.rx.tap.asObservable().withLatestFrom(tokenTextField.rx.text.map { $0 ?? "" })
-        let joinSessionInput = JoinSessionUseCase.Input(sessionTokenTrigger: joinSessionTrigger, user: user)
+        let latestUser = joinSessionButton.rx.tap.asObservable().withLatestFrom(self.observableUser)
+        let joinSessionInput = Observable.zip(latestUser, joinSessionTrigger) {
+            return ($0, $1)
+        }
+
         JoinSessionUseCase.assemble(input: joinSessionInput, service: Repositories.sessionRepository)
             .takeUntil(rx.sentMessage(#selector(viewWillDisappear))) // TODO check when session changed binding is disposed
             .bindTo(rx.state)
@@ -53,7 +58,7 @@ fileprivate extension Reactive where Base: CreateOrJoinSessionViewController {
         return UIBindingObserver(UIElement: base) { controller, state in
             switch state {
                 case .succeeded(let session):
-                    let sessionController = SessionViewController.controller(session: session, currentUser: controller.user)
+                    let sessionController = SessionViewController.controller(session: session, currentUser: controller.observableUser)
                     sessionController.didFinish = { [weak controller] in
                         controller?.dismiss(animated: true, completion: nil)
                     }

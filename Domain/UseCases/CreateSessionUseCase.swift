@@ -20,12 +20,12 @@ public class CreateSessionUseCase: UseCase {
         }
     }
 
-    public static func assemble(input: Input,
+    public static func assemble(input: Observable<User>,
                                 service: Services,
                                 output: AnyObserver<UseCaseState<Session>>) -> Disposable {
-        return input.trigger
-            .flatMapLatest {
-                return tryToMakeSession(user: input.user, services: service)
+        return input
+            .flatMapLatest { user in
+                return tryToMakeSession(user: user, services: service)
                     .flatMapLatest(service.repository.save)
                     .map(UseCaseState.succeeded)
                     .startWith(UseCaseState.inProgress)
@@ -36,11 +36,11 @@ public class CreateSessionUseCase: UseCase {
             .subscribe(output)
     }
 
-    public static func assemble(input: Input,
+    public static func assemble(input: Observable<User>,
                                 service: Services) -> Observable<UseCaseState<Session>> {
-        return input.trigger
-            .flatMapLatest {
-                return tryToMakeSession(user: input.user, services: service)
+        return input
+            .flatMapLatest { user in
+                return tryToMakeSession(user: user, services: service)
                     .flatMapLatest(service.repository.save)
                     .map(UseCaseState.succeeded)
                     .startWith(UseCaseState.inProgress)
@@ -90,6 +90,7 @@ public class CreateSessionUseCase: UseCase {
         return Session(ID: services.repository.generateUUID(),
                 token: token,
                 name: token,
+                biome: Biome(rawValue: Int(arc4random()) % Biome.count)!,
                 configuration: Session.Configuration(ID: services.repository.generateUUID()),
                 stories: [story])
         }
